@@ -1,0 +1,153 @@
+package libary_versin_2;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics2D;
+
+public class TextArea {
+	private int x, y;
+	private int thicness = 10;
+	private int width = 200;
+	private int height = 100;
+
+	// outline
+	private boolean drawOutline = true;
+	private Color outlineColor = Color.black;
+	private Color backgroundColor = Color.white;
+	//ende outline
+	
+	// text
+	private int fontSize = 40;
+	private Font font;
+	private Color textColor = Color.black;
+	private String text = "";
+	private String alignment = "zentriert";
+	private double textWidth;
+	private double textHeight;
+	// ende text
+
+	//konstruktoren
+	public TextArea(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	public TextArea(int x, int y, int width, int height) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+	}
+	public TextArea(int x, int y, int width, int height, String text) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.text = text;
+	}
+	public TextArea(int x, int y, int width, int height, String text, String alignment) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.text = text;
+		this.alignment = alignment;
+	}
+	public TextArea(int x, int y, int width, int height, String text, String alignment, Color color) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.text = text;
+		this.alignment = alignment;
+		this.textColor = color;
+	}
+	public TextArea(int x, int y, int width, int height, String text, Color color) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.text = text;
+		this.textColor = color;
+	}
+	//ende Konstruktoren
+	
+	// textänderungen
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public void setTextFont(Font font) {
+		this.font = font;
+	}
+
+	public void setTextAlignment(String alignment) {
+		this.alignment = alignment;
+	}
+
+	public void setTextFontSize(int fontSize) {
+		this.fontSize = fontSize;
+	}
+	
+	public void setTextColor(Color color) {
+		this.textColor = color;
+	}
+	// ende textänderungen
+
+	// textArea änderungen
+	public void drawOutline(boolean state) {
+		drawOutline = true;
+	}
+	public void setBackgroundColor(Color color) {
+		this.backgroundColor = color;
+	}
+	public void setThicness(int ThicnessInPixeln) {
+		thicness = ThicnessInPixeln;
+	}
+	public void setFramingColor(Color color) {
+		this.outlineColor = color;
+	}
+	//ende textArea änderungen
+	
+	//  *paint bereich* //
+	public void paint(Graphics2D g) {
+		g.setColor(backgroundColor);
+		g.fillRect(x, y, width, height);
+
+		g.setColor(textColor);
+		font = new Font("TimesRoman", Font.PLAIN, fontSize);
+		FontMetrics fMetric = g.getFontMetrics(font);
+		g.setFont(font);
+		this.textWidth = fMetric.stringWidth(text);
+		this.textHeight = fMetric.getHeight();
+		switch (alignment) {
+		case "linksbündig":
+			g.drawString(text, x, (int)(y + textHeight/2 + 3));
+			break;
+		case "rechtsbündig":
+			g.drawString(text, (int)(x + (width - textWidth)) , (int)(y + textHeight/2 + 3));
+			break;
+		case "zentriert":
+			g.drawString(text, (int)(x - textWidth/2 + width/2), (int)(y + textHeight/2 + 3));
+			break;
+
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + alignment);
+		}
+		
+		if(this.drawOutline) {
+			this.drawOutline(g);
+		}	
+	}
+	
+	private void drawOutline(Graphics2D g) {
+		
+		g.setColor(outlineColor);
+		g.fillRect(x, y, thicness, height);
+		g.fillRect(x, y, width, thicness);
+		g.fillRect(x + width - thicness, y, thicness, height);
+		g.fillRect(x, y + height - thicness, width, thicness);
+		g.drawRect(x, y, width, height);
+		
+	}
+}
