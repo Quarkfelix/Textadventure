@@ -12,13 +12,13 @@ public class Player {
 	public static ArrayList<Item> inventory = new ArrayList<Item>(); //alle items sind kinder von item
 	
 	public Player() {
-		inventory.add(new Müllpicker());
-		inventory.add(new Müllpicker());
+		inventory.add(new Muellpicker());
+		inventory.add(new Muellpicker());
 	
 	}
 	
 	/*
-	 * Greift ausgewählten gegner mit ausgewählen müllpicker an.
+	 * Greift ausgewaehlten gegner mit ausgewaehlen muellpicker an.
 	 */
 	public void attack(Room room, int enemyToAttack) {
 		room.enemys.get(enemyToAttack).takedamage(inventory.get(activeSlot).getAttackdamage());

@@ -33,10 +33,10 @@ public class Settings {
 	public static int enemyHealth = 500;
 	public static int enemyAttackdamage = 20;
 	
-	//Müllpicker
-	public static int müllpickerAttackdamageLVL1 = 10;
-	public static int müllpickerAttackdamageLVL2 = 50;
-	public static int müllpickerAttackdamageLVL3 = 100;
+	//Mï¿½llpicker
+	public static int muellpickerAttackdamageLVL1 = 10;
+	public static int muellpickerAttackdamageLVL2 = 50;
+	public static int muellpickerAttackdamageLVL3 = 100;
 	
 	
 	

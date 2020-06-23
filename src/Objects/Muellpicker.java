@@ -2,16 +2,16 @@ package Objects;
 
 import Infrastructure.Settings;
 
-public class Müllpicker extends Item {
+public class Muellpicker extends Item {
 	private int rarity = 1;
 	private int attackdamage;
 
-	public Müllpicker() {
+	public Muellpicker() {
 		assignRarity();
 	}
 
 	/*
-	 * legt seltenheit des müllpickers bei erzeugung fest
+	 * legt seltenheit des mï¿½llpickers bei erzeugung fest
 	 * schaden wird je nach rarity festgelegt 
 	 * wird nur einmal aus dem konstruktor aufgerufen
 	 */
@@ -19,13 +19,13 @@ public class Müllpicker extends Item {
 		int randomZahl = (int)((Math.random()) * 10 + 1);
 		if(randomZahl <= 5) {
 			rarity = 1;
-			setAttackdamage(Settings.müllpickerAttackdamageLVL1);
+			setAttackdamage(Settings.muellpickerAttackdamageLVL1);
 		} else if (randomZahl <= 9) {
 			rarity = 2;
-			setAttackdamage(Settings.müllpickerAttackdamageLVL2);
+			setAttackdamage(Settings.muellpickerAttackdamageLVL2);
 		} else if (randomZahl <= 10) {
 			rarity = 3;
-			setAttackdamage(Settings.müllpickerAttackdamageLVL3);
+			setAttackdamage(Settings.muellpickerAttackdamageLVL3);
 		}
 	}
 

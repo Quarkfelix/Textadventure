@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import Infrastructure.Settings;
-import Objects.Müllpicker;
+import Objects.Muellpicker;
 import Objects.Player;
 import UI.DrawGame;
 import libary_versin_2.Button;
 
-//ausklappmenü mit allen aktionen die in einem Raum mäglich sind 
+//ausklappmenue mit allen aktionen die in einem Raum moeglich sind 
 public class ActionMenu {
 	public static int selectedButton = 0;
 	private ArrayList<Integer> selectedButtonsStack = new ArrayList<Integer>();
@@ -117,9 +117,9 @@ public class ActionMenu {
 	}
 
 	/*
-	 * wird aus Surface aufgerufen wenn ein button gedrückt wird
-	 * es wird der aktive button "gerdückt"
-	 * der gedrückte button wird auf den stack geschrieben damit später der weg zurückverfolgt werden kann
+	 * wird aus Surface aufgerufen wenn ein button gedrueckt wird
+	 * es wird der aktive button "gerdueckt"
+	 * der gedrueckte button wird auf den stack geschrieben damit spaeter der weg zurueckverfolgt werden kann
 	 */  
 	public void pressButton() {
 		switch (selectedButton) {
@@ -217,9 +217,9 @@ public class ActionMenu {
 	}
 
 	/*
-	 *  wird aufgerufen wenn in Surface der B button gedrückt wird.
-	 *  setzt die untermenüs aktiv und deaktiviert sie.
-	 *  wenn ein menü zurückgegangen wird wird vom stack die letzte butttonnummer genommen und aktiv gesetzt. anschließend wird die nummer gelöscht.
+	 *  wird aufgerufen wenn in Surface der B button gedrï¿½ckt wird.
+	 *  setzt die untermenues aktiv und deaktiviert sie.
+	 *  wenn ein menue zurueckgegangen wird wird vom stack die letzte butttonnummer genommen und aktiv gesetzt. anschliesssend wird die nummer geloescht.
 	 */
 	public void back() {
 		if (actionMenuActive) {
