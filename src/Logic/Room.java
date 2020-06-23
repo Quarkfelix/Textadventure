@@ -10,17 +10,45 @@ import javax.imageio.ImageIO;
 
 import Infrastructure.Settings;
 import Objects.Enemy;
+import Objects.Item;
+import Objects.Key;
+import Objects.Muellpicker;
+import Objects.Potion;
 
+//content of room is displayed in TextArea in Surface
 public class Room {
 	private int randomZahl;
 	public String story = "";
 	public String name = "";
 	public ArrayList<Enemy> enemys = new ArrayList<Enemy>();
+	public ArrayList<Item> roomInventory = new ArrayList<Item>();
+	
 	public Room() {
 		roomsetup();
+		createItems();
 		enemysetup();
 	}
 	
+	public void createItems() {		
+		
+		
+		
+		//attack
+		if(Settings.muellpickerSpawnchance < Math.random()) {
+			roomInventory.add(new Muellpicker());
+		}
+		
+		//heal
+		if(Settings.potionSpawnchance < Math.random()) {
+			roomInventory.add(new Potion());
+		}
+		
+		//key
+		if(Settings.keySpawnchance < Math.random()) {
+			roomInventory.add(new Key());
+		}
+	
+	}
 	
 	private void enemysetup() {
 		randomZahl = (int)((Math.random()) * 4); //zahl von 0 bis 4\
@@ -42,41 +70,43 @@ public class Room {
 	}
 	
 	/*
-	 *	Dem erstellten Raum wird eine von 6 möglichen storys zugewiesen.
+	 *	Dem erstellten Raum wird eine von 6 moeglichen storys zugewiesen.
 	 */
 	private void roomsetup() {
 		randomZahl = (int)((Math.random()) * 6 + 1); //zahl von 1 bis 6
 		switch (randomZahl) {
 		case 1:
-			name = "Küche";
-			story = "In der Küche liegt ein blutiges Messer. Was ist hier wohl passiert?";
+			name = "Kueche";
+			story = "Kueche";
 			break;
 		case 2:
 			name = "Badezimmer";
-			story = "Hier liegt eine Haarbürste.";
+			story = "Badezimmer";
 			break;
 		case 3:
 			name = "Arbeitszimmer";
-			story = "Ein mann starrt dich an.";
+			story = "Arbeitszimmer";
 			break;
 		case 4:
 			name = "Esszimmer";
-			story = "Überall liegen Brotkrümel. hoffentlich zieht das keine ratten an!";
+			story = "Esszimmer";
 			break;
 		case 5:
 			name = "Spielzimmer";
-			story = "Jemand benutzt gerade die VR Brille.";
+			story = "Spielzimmer";
 			break;
 		case 6:
 			name = "SchalfZimmer";
-			story = "Auf dem Bett liegt ein Frau und Schläft.";
+			story = "SchalfZimmer";
 			break;
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + randomZahl);
 		}
 	}
 	
-	
+	public Item getItem(int index) {
+		return roomInventory.get(index);
+	}
 	
 	public void paint(Graphics2D g) {
 

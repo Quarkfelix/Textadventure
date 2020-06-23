@@ -9,7 +9,7 @@ import Infrastructure.Settings;
 import Objects.Muellpicker;
 import Objects.Player;
 import UI.DrawGame;
-import libary_versin_2.Button;
+import libary_version_2.Button;
 
 //ausklappmenue mit allen aktionen die in einem Raum moeglich sind 
 public class ActionMenu {
@@ -17,6 +17,8 @@ public class ActionMenu {
 	private ArrayList<Integer> selectedButtonsStack = new ArrayList<Integer>();
 	private int x = 45;
 	private int y = 45;
+	private int bWidth = 100;
+	private int bHeight = 40;
 	private boolean actionMenuActive = false;
 	private boolean moveMenuActive = false;
 	private boolean attackMenuActive = false;
@@ -29,37 +31,38 @@ public class ActionMenu {
 		for (int i = 0; i < 50; i++) {
 			buttons.add(null);
 		}
-		buttons.set(0, new Button(x, y, 60, 30));
+		buttons.set(0, new Button(x, y, bWidth, bHeight));
 		// moveButtons
-		buttons.set(1, new Button(x, y, 60, 30));
-		buttons.set(10, new Button(x, y, 60, 30));
-		buttons.set(11, new Button(x, y + 35, 60, 30));
-		buttons.set(12, new Button(x, y + 70, 60, 30));
-		buttons.set(13, new Button(x, y + 105, 60, 30));
+		buttons.set(1, new Button(x, y, bWidth, bHeight));
+		buttons.set(10, new Button(x, y, bWidth, bHeight));
+		buttons.set(11, new Button(x, y + bHeight + 5, bWidth, bHeight));
+		buttons.set(12, new Button(x, y + 2*bHeight + 10, bWidth, bHeight));
+		buttons.set(13, new Button(x, y + 3*bHeight + 15, bWidth, bHeight));
 		// attackButtons
-		buttons.set(2, new Button(x, y + 35, 60, 30));
-		buttons.set(20, new Button(x, y, 60, 30));
-		buttons.set(21, new Button(x, y + 35, 60, 30));
-		buttons.set(22, new Button(x, y + 70, 60, 30));
-		buttons.set(23, new Button(x, y + 105, 60, 30));
+		buttons.set(2, new Button(x, y + bHeight + 5, bWidth, bHeight));
+		buttons.set(20, new Button(x, y, bWidth, bHeight));
+		buttons.set(21, new Button(x, y + bHeight + 5, bWidth, bHeight));
+		buttons.set(22, new Button(x, y + 2*bHeight + 10, bWidth, bHeight));
+		buttons.set(23, new Button(x, y + 105, bWidth, bHeight));
 		// pickUpbuttons
-		buttons.set(3, new Button(x, y + 70, 60, 30));
-		buttons.set(30, new Button(x, y, 60, 30));
-		buttons.set(31, new Button(x, y + 35, 60, 30));
-		buttons.set(32, new Button(x, y + 70, 60, 30));
-		buttons.set(33, new Button(x, y + 105, 60, 30));
+		buttons.set(3, new Button(x, y + 2*bHeight + 10, bWidth, bHeight));
+		buttons.set(30, new Button(x, y, bWidth, bHeight));
+		buttons.set(31, new Button(x, y + bHeight + 5, bWidth, bHeight));
+		buttons.set(32, new Button(x, y + 2*bHeight + 10, bWidth, bHeight));
+		buttons.set(33, new Button(x, y + 3*bHeight + 15, bWidth, bHeight));
 		// enemys
-		buttons.set(47, new Button(x + 80, y + 245, 60, 30));
-		buttons.set(46, new Button(x + 80, y + 210, 60, 30));
-		buttons.set(45, new Button(x + 80, y + 175, 60, 30));
-		buttons.set(44, new Button(x + 80, y + 140, 60, 30));
-		buttons.set(43, new Button(x + 80, y + 105, 60, 30));
-		buttons.set(42, new Button(x + 80, y + 70, 60, 30));		
-		buttons.set(41, new Button(x + 80, y + 35, 60, 30));
-		buttons.set(40, new Button(x + 80, y, 60, 30));
+		buttons.set(47, new Button(x + 80, y + 7*bHeight + 35, bWidth, bHeight));
+		buttons.set(46, new Button(x + 80, y + 6*bHeight + 30, bWidth, bHeight));
+		buttons.set(45, new Button(x + 80, y + 5*bHeight + 25, bWidth, bHeight));
+		buttons.set(44, new Button(x + 80, y + 4*bHeight + 20, bWidth, bHeight));
+		buttons.set(43, new Button(x + 80, y + 3*bHeight + 15, bWidth, bHeight));
+		buttons.set(42, new Button(x + 80, y + 2*bHeight + 10, bWidth, bHeight));		
+		buttons.set(41, new Button(x + 80, y + bHeight + 5, bWidth, bHeight));
+		buttons.set(40, new Button(x + 80, y, bWidth, bHeight));
 		buttonSetup();
 	}
 
+	//enemys button werden standartmaessig auf die hintergrundfarbe gesetzt also unsichtbar (hätte man auch mit alpha value machen können)
 	public void buttonSetup() {
 		for (int i = 0; i < 50; i++) {
 			try {
@@ -86,7 +89,10 @@ public class ActionMenu {
 		
 		// pick up
 		buttons.get(3).setText("pick Up");
-		
+		for (int i = 0; i < Surface.getCurrentRoom().roomInventory.size(); i++) {
+			System.out.println(Surface.getCurrentRoom().roomInventory.size());
+			buttons.get(30 + i).setText(Surface.getCurrentRoom().roomInventory.get(i).getDescription());
+		}		
 		//enemys
 		for (int i = 40; i < 50; i++) {
 			try {
@@ -96,7 +102,7 @@ public class ActionMenu {
 		
 	}
 
-	// setzt selectedButton und malt den frame passend neu
+	// setzt selectedButton und malt des frame passend neu
 	public void setSelectedButton(int buttonindex) {
 		buttons.get(selectedButton).setFramingActive(false);
 		selectedButton = buttonindex;
@@ -117,7 +123,7 @@ public class ActionMenu {
 	}
 
 	/*
-	 * wird aus Surface aufgerufen wenn ein button gedrueckt wird
+	 * wird aus Surface/keyhandler aufgerufen wenn ein button gedrueckt wird
 	 * es wird der aktive button "gerdueckt"
 	 * der gedrueckte button wird auf den stack geschrieben damit spaeter der weg zurueckverfolgt werden kann
 	 */  
@@ -210,6 +216,55 @@ public class ActionMenu {
 			selectedButtonsStack.add(selectedButton);
 			setSelectedButton(30);
 			break;
+		case 30:
+			if (Surface.getCurrentRoom().getItem(0) != null) {
+				Surface.player.pickUp(0);
+				buttons.get(30).setText("");
+				System.out.println();
+			}
+			break;
+		case 31:
+			if (Surface.getCurrentRoom().getItem(1) != null) {
+				Surface.player.pickUp(1);
+				buttons.get(31).setText("");
+			}
+			break;
+		case 32:
+			if (Surface.getCurrentRoom().getItem(2) != null) {
+				Surface.player.pickUp(2);
+				buttons.get(32).setText("");
+			}
+			break;
+		case 33:
+			if (Surface.getCurrentRoom().getItem(3) != null) {
+				Surface.player.pickUp(3);
+				buttons.get(33).setText("");
+			}
+			break;
+		case 34:
+			if (Surface.getCurrentRoom().getItem(4) != null) {
+				Surface.player.pickUp(4);
+				buttons.get(34).setText("");
+			}
+			break;
+		case 35:
+			if (Surface.getCurrentRoom().getItem(5) != null) {
+				Surface.player.pickUp(5);
+				buttons.get(35).setText("");
+			}
+			break;
+		case 36:
+			if (Surface.getCurrentRoom().getItem(6) != null) {
+				Surface.player.pickUp(6);
+				buttons.get(36).setText("");
+			}
+			break;
+		case 37:
+			if (Surface.getCurrentRoom().getItem(7) != null) {
+				Surface.player.pickUp(7);
+				buttons.get(37).setText("");
+			}
+			break;
 		default:
 			System.out.println("fehler in der buttonaktionszuweisung");
 			throw new IllegalArgumentException("Unexpected value: " + selectedButton);
@@ -276,6 +331,19 @@ public class ActionMenu {
 			break;
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + DrawGame.surface);
+		}
+		
+		//items in room
+		for (int i = 30; i < 49; i++) {
+			try {
+				buttons.get(i).setText("");
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		for (int i = 0; i < Surface.getCurrentRoom().roomInventory.size(); i++) {
+			System.out.println(Surface.getCurrentRoom().roomInventory.size());
+			buttons.get(30 + i).setText(Surface.getCurrentRoom().roomInventory.get(i).getDescription());
 		}
 		
 		//waffenbuttons

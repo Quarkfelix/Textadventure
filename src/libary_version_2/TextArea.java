@@ -1,4 +1,4 @@
-package libary_versin_2;
+package libary_version_2;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -23,6 +23,8 @@ public class TextArea {
 	private Color textColor = Color.black;
 	private String text = "";
 	private String alignment = "zentriert";
+	private String verticalAlignment = "center";
+	private int verticalAlignmentInt = 0;
 	private double textWidth;
 	private double textHeight;
 	// ende text
@@ -76,13 +78,22 @@ public class TextArea {
 	public void setText(String text) {
 		this.text = text;
 	}
+	
+	public void setText(int text) {
+		this.text = text + "";
+	}
 
 	public void setTextFont(Font font) {
 		this.font = font;
 	}
 
+	/*linksbündig rechtsbündig zentriert*/
 	public void setTextAlignment(String alignment) {
 		this.alignment = alignment;
+	}
+	
+	public void setTextAlignmentVertical(String alignment) {
+		this.verticalAlignment = alignment;
 	}
 
 	public void setTextFontSize(int fontSize) {
@@ -96,7 +107,7 @@ public class TextArea {
 
 	// textArea änderungen
 	public void drawOutline(boolean state) {
-		drawOutline = true;
+		drawOutline = state;
 	}
 	public void setBackgroundColor(Color color) {
 		this.backgroundColor = color;
@@ -120,20 +131,34 @@ public class TextArea {
 		g.setFont(font);
 		this.textWidth = fMetric.stringWidth(text);
 		this.textHeight = fMetric.getHeight();
-		switch (alignment) {
-		case "linksbündig":
-			g.drawString(text, x, (int)(y + textHeight/2 + 3));
+		switch (verticalAlignment) {
+		case "top":
+			this.verticalAlignmentInt = (int)(y + textHeight/2 + 3);
 			break;
-		case "rechtsbündig":
-			g.drawString(text, (int)(x + (width - textWidth)) , (int)(y + textHeight/2 + 3));
+		case "bottom":
+			this.verticalAlignmentInt = y + height;
 			break;
-		case "zentriert":
-			g.drawString(text, (int)(x - textWidth/2 + width/2), (int)(y + textHeight/2 + 3));
+		case "center":
+			verticalAlignmentInt = (int) (y + height/2 + textHeight/3 - 4) ;
 			break;
-
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + alignment);
 		}
+		switch (alignment) {
+		case "linksbündig":
+			g.drawString(text, x, verticalAlignmentInt);
+			break;
+		case "rechtsbündig":
+			g.drawString(text, (int)(x + (width - textWidth)) , verticalAlignmentInt);
+			break;
+		case "zentriert":
+			g.drawString(text, (int)(x - textWidth/2 + width/2), verticalAlignmentInt);
+			break;
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + alignment);
+		}
+		
+
 		
 		if(this.drawOutline) {
 			this.drawOutline(g);

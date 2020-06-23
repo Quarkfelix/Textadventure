@@ -1,11 +1,10 @@
-package libary_versin_2;
+package libary_version_2;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 
 public class TextWriter {
-
 	
 	public void drawText(Graphics2D g, int x, int y, String absatz, Font font, String text) {
 		g.setColor(Color.BLACK);
@@ -45,7 +44,5 @@ public class TextWriter {
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + absatz);
 		}
-		
-		
 	}
 }

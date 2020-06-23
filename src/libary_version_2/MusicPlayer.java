@@ -1,4 +1,4 @@
-package libary_versin_2;
+package libary_version_2;
 import java.io.File;
 
 import javax.sound.sampled.AudioInputStream;

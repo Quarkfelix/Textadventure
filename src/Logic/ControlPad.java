@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import java.util.HashMap;
 
 import UI.DrawGame;
-import libary_versin_2.Button;
+import libary_version_2.Button;
 
 public class ControlPad {
 	private int x, y;
@@ -45,8 +45,8 @@ public class ControlPad {
 	
 	
 	/*
-	 *	Kann aus anderen Klassen aufgerufen werden um zu schauen ob da ControlPad gedrückt wurde. 
-	 *	es wird der bereich zurückgegeben der gedrückt wurde oder NAN wenn nichts gedrückt wurde.
+	 *	Kann aus anderen Klassen aufgerufen werden um zu schauen ob da ControlPad gedrï¿½ckt wurde. 
+	 *	es wird der bereich zurï¿½ckgegeben der gedrï¿½ckt wurde oder NAN wenn nichts gedrï¿½ckt wurde.
 	 */
 	public String checkButtonPress(int x, int y) {
 		if (buttons.get("up").contains(x, y)) {

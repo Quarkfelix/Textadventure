@@ -3,6 +3,7 @@ package Objects;
 import java.util.ArrayList;
 
 import Logic.Room;
+import Logic.Surface;
 
 public class Player {
 	
@@ -15,6 +16,13 @@ public class Player {
 		inventory.add(new Muellpicker());
 		inventory.add(new Muellpicker());
 	
+	}
+	
+	//picks up item from roomInventory
+	public void pickUp(int index) {
+		inventory.add(Surface.getCurrentRoom().getItem(index));
+		//Surface.getCurrentRoom().roomInventory.set(index, null);
+		System.out.println(inventory.size());
 	}
 	
 	/*

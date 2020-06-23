@@ -1,4 +1,4 @@
-package libary_versin_2;
+package libary_version_2;
 
 
 import java.awt.Color;
@@ -6,14 +6,16 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 
-import Infrastructure.Settings;
-
 /*
  * font sachen:
  * Font.PLAIN = standart
  * Font.BOLD = Fett
  * Font.ITALIC = Kursiv
  * 
+ * 
+ * VerbesserungsIdeen:
+ * -Rahmendicke einstellbar //kann von TextArea genommen werden
+ * -abgerundete ecken
  */
 
 public class Button {
@@ -23,6 +25,7 @@ public class Button {
 	private int height = 50;
 	private double angle = 0;
 	private boolean oval = false;
+	private boolean active = true;
 	private boolean framing = true;
 	private Color color = Color.DARK_GRAY;
 	private Color framingColor = Color.GREEN;
@@ -90,6 +93,12 @@ public class Button {
 	public void setFramingActive(boolean state) {
 		framing = state;
 	}
+	public void setActive(boolean state) {
+		this.active = state;
+	}
+	public boolean isActive() {
+		return active;
+	}
 	
 	//farbänderungen
 	public void setFramingColor(Color color) {
@@ -121,9 +130,11 @@ public class Button {
 	
 	//checkt ob übergebener punkt enthalten ist
 	public boolean contains(int x, int y) {
-		if(x >= this.x && y >= this.y && x<= this.x + width && y <= this.y + height) {
-			return true;
-		} 		
+		if(active) {
+			if(x >= this.x && y >= this.y && x<= this.x + width && y <= this.y + height) {
+				return true;
+			} 	
+		}	
 		return false;
 	}
 	

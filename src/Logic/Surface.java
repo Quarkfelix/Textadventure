@@ -8,8 +8,8 @@ import java.util.Map;
 
 import Infrastructure.Settings;
 import Objects.Player;
-import libary_versin_2.Button;
-import libary_versin_2.TextArea;
+import libary_version_2.Button;
+import libary_version_2.TextArea;
 
 public class Surface {
 	public TextArea textArea;
@@ -17,18 +17,22 @@ public class Surface {
 	public ControlPad controlPad;
 	private Button aButton;
 	private Button bButton;
-	public static Room[][] rooms = new Room[50][50];
-	public static Player player = new Player();
-	public static ActionMenu actionMenu = new ActionMenu();
+	public static Room[][] rooms;
+	public static Player player;
+	public static ActionMenu actionMenu;
 	
 	public Surface() {
+		rooms = new Room[50][50];
+		roomSetup();
+		player = new Player();
+		actionMenu = new ActionMenu();
 		textArea = new TextArea(Settings.textAreaX, Settings.textAreaY, Settings.textAreaWidth, Settings.textAreaHeight);
 		textArea.setBackgroundColor(Settings.displayColor);
 		textArea.setThicness(15);
 		textArea.setFramingColor(new Color(31, 31, 31));
 		controlPad = new ControlPad(Settings.controlPadX, Settings.controlPadY);
 		buttonSetup();
-		roomSetup();
+		updateTextAreas();
 	}
 	
 	public static Room getCurrentRoom() {
@@ -36,7 +40,7 @@ public class Surface {
 	}
 	
 	/*
-	 * erstellt die räume. wird einmal beim programmstart durch konstruktor aufgerufen
+	 * erstellt die raeume. wird einmal beim programmstart durch konstruktor aufgerufen
 	 */
 	private void roomSetup() {
 		for (int i = 0; i < 50; i++) {
@@ -44,7 +48,11 @@ public class Surface {
 				rooms[i][j] = new Room();
 			}
 		}
-		updateTextAreas();
+		try {
+			updateTextAreas();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		System.out.println("Rooms created");
 	}
 	
@@ -68,10 +76,10 @@ public class Surface {
 	}
 	
 	/*
-	 * mit dieser methode kann überprüft werden ob ein Button gedrückt wurde
-	 * wenn a button gedrückt wurde wird im actionMenu der aktive button gedrückt 
-	 * wenn b button gedrückt wird, wird ins vorhherige menü zurückgegangen und der zuletzt ausgewählte button markiert
-	 * wenn auf controlPad up oder down gedrückt wird, wird der button drüber oder drunter aktiv gesetzt.
+	 * mit dieser methode kann ï¿½berprï¿½ft werden ob ein Button gedrï¿½ckt wurde
+	 * wenn a button gedrï¿½ckt wurde wird im actionMenu der aktive button gedrï¿½ckt 
+	 * wenn b button gedrï¿½ckt wird, wird ins vorhherige menï¿½ zurï¿½ckgegangen und der zuletzt ausgewï¿½hlte button markiert
+	 * wenn auf controlPad up oder down gedrï¿½ckt wird, wird der button drï¿½ber oder drunter aktiv gesetzt.
 	*/
 	public void checkButtonPress(int x, int y) {
 		if(aButton.contains(x, y)) {

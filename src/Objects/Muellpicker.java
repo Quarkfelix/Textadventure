@@ -3,6 +3,8 @@ package Objects;
 import Infrastructure.Settings;
 
 public class Muellpicker extends Item {
+	public final double spawnchance = 0.6;
+	public String description = "Muellpicker"; //this variable will be changed for the different kinds of muellpicker
 	private int rarity = 1;
 	private int attackdamage;
 
@@ -11,7 +13,7 @@ public class Muellpicker extends Item {
 	}
 
 	/*
-	 * legt seltenheit des m�llpickers bei erzeugung fest
+	 * legt seltenheit des muellpickers bei erzeugung fest
 	 * schaden wird je nach rarity festgelegt 
 	 * wird nur einmal aus dem konstruktor aufgerufen
 	 */
@@ -44,6 +46,16 @@ public class Muellpicker extends Item {
 		return attackdamage;
 	}
 
+	@Override
+	public double getSpawnchance() {
+		return spawnchance;
+	}
+	
+	@Override
+	public String getDescription() {
+		return description;
+	}
+	
 	public void setAttackdamage(int attackdamage) {
 		this.attackdamage = attackdamage;
 	}

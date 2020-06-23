@@ -27,13 +27,19 @@ public class Settings {
 	public static int bButtonY = 450;
 	public static int bButtonWidth = 40;
 	public static int bButtonHeight = 40;
-	public static double bButtonAngle = 0;
+	public static double bButtonAngle = 0;	
 	
 	//Enemy
 	public static int enemyHealth = 500;
 	public static int enemyAttackdamage = 20;
 	
-	//M�llpicker
+	
+	//SpawnChances
+	public static final double keySpawnchance = 0.5;
+	public static final double muellpickerSpawnchance = 0.5;
+	public static final double potionSpawnchance = 0.5;
+	
+	//Muellpicker
 	public static int muellpickerAttackdamageLVL1 = 10;
 	public static int muellpickerAttackdamageLVL2 = 50;
 	public static int muellpickerAttackdamageLVL3 = 100;
