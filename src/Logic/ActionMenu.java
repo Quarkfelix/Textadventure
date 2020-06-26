@@ -272,8 +272,8 @@ public class ActionMenu {
 	}
 
 	/*
-	 *  wird aufgerufen wenn in Surface der B button gedr�ckt wird.
-	 *  setzt die untermenues aktiv und deaktiviert sie.
+	 *  wird aufgerufen wenn in Surface der B button gedrueckt wird.
+	 *  setzt die untermenues aktiv und deaktiviert sie. (wurde so gemacht aufgrund von damals nicht vorhandner funktion in button klasse)
 	 *  wenn ein menue zurueckgegangen wird wird vom stack die letzte butttonnummer genommen und aktiv gesetzt. anschliesssend wird die nummer geloescht.
 	 */
 	public void back() {
