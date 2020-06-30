@@ -25,6 +25,17 @@ public class Player {
 		System.out.println(inventory.size());
 	}
 	
+	//das inventar wird auf alle Attack items untersucht
+	public ArrayList<Item> getAllWeapons() {
+		ArrayList<Item> items = new ArrayList<Item>();
+		for (Item item : inventory) {
+			if(item.getClass().toString() == "Muellpicker") {
+				items.add(item);
+			}
+		}
+		return items;
+		
+	}
 	/*
 	 * Greift ausgewaehlten gegner mit ausgewaehlen muellpicker an.
 	 */

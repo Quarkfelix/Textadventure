@@ -50,6 +50,7 @@ public class Room {
 	
 	}
 	
+	//fügt zwischen 0 und 4 gener in den raum hinzu
 	private void enemysetup() {
 		randomZahl = (int)((Math.random()) * 4); //zahl von 0 bis 4\
 		switch (randomZahl) {
@@ -63,7 +64,6 @@ public class Room {
 			enemys.add(new Enemy());
 		case 0: 
 			break;
-
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + randomZahl);
 		}
