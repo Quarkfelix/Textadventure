@@ -99,7 +99,7 @@ public class ActionMenu {
 		// enemys
 		for (int i = 40; i < 50; i++) {
 			try {
-				buttons.get(i).setColor(Settings.displayColor); //hier noch schnell button klasse um visible erweitern 
+				buttons.get(i).setColor(new Color(54, 54, 54));
 			} catch (Exception e) {
 			}
 		}
@@ -315,24 +315,21 @@ public class ActionMenu {
 	 */
 	public void update() {
 		// enemybuttons
-		for (int i = 40; i < 49; i++) {
+		for (int i = 20; i < 29; i++) {
 			try {
 				buttons.get(i).setText("");
+				buttons.get(i).setColor(new Color(54, 54, 54));
 			} catch (Exception e) {
 			}
 		}
 		switch (Surface.getCurrentRoom().enemys.size()) {
 		case 4:
-			buttons.get(23).setColor(new Color(54, 54, 54));
 			buttons.get(23).setText("enemy4");
 		case 3:
-			buttons.get(22).setColor(new Color(54, 54, 54));
 			buttons.get(22).setText("enemy3");
 		case 2:
-			buttons.get(21).setColor(new Color(54, 54, 54));
 			buttons.get(21).setText("enemy2");
 		case 1:
-			buttons.get(20).setColor(new Color(54,54, 54));
 			buttons.get(20).setText("enemy1");
 		case 0:
 			break;
@@ -341,25 +338,21 @@ public class ActionMenu {
 		}
 
 		// waffenbuttons
-		for (int i = 20; i < 29; i++) {
+		for (int i = 40; i < 49; i++) {
 			try {
 				buttons.get(i).setText("");
 			} catch (Exception e) {
 			}
 		}
-		switch (Player.inventory.size()) {
+		switch (Surface.player.getAllWeapons().size()) {
 		case 4:
-			buttons.get(43).setColor(new Color(54, 54, 54));
 			buttons.get(43).setText("atk: " + Surface.player.getAllWeapons().get(3).getAttackdamage());
 		case 3:
-			buttons.get(42).setColor(new Color(54, 54, 54));
-			buttons.get(42).setText("atk: " + Surface.player.getAllWeapons().get(3).getAttackdamage());
+			buttons.get(42).setText("atk: " + Surface.player.getAllWeapons().get(2).getAttackdamage());
 		case 2:
-			buttons.get(41).setColor(new Color(54, 54, 54));
-			buttons.get(41).setText("atk:" + Surface.player.getAllWeapons().get(3).getAttackdamage());
+			buttons.get(41).setText("atk:" + Surface.player.getAllWeapons().get(1).getAttackdamage());
 		case 1:
-			buttons.get(40).setColor(new Color(100, 0, 0));
-			buttons.get(40).setText("atk:" + Surface.player.getAllWeapons().get(3).getAttackdamage());
+			buttons.get(40).setText("atk:" + Surface.player.getAllWeapons().get(0).getAttackdamage());
 		case 0:
 			break;
 		default:
@@ -404,9 +397,9 @@ public class ActionMenu {
 				}
 			}
 			if (enemyMenuActive) {
-				for (int j = 40; j < 50; j++) {
+				for (int i = 40; i < 50; i++) {
 					try {
-						buttons.get(j).paint(g);
+						buttons.get(i).paint(g);
 					} catch (Exception e) {
 						// TODO: handle exception
 					}

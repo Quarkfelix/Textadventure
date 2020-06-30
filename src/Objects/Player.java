@@ -13,8 +13,6 @@ public class Player {
 	public static ArrayList<Item> inventory = new ArrayList<Item>(); //alle items sind kinder von item
 	
 	public Player() {
-		inventory.add(new Muellpicker());
-		inventory.add(new Muellpicker());
 	
 	}
 	
@@ -56,5 +54,11 @@ public class Player {
 		this.y = y;
 	}
 	
+	public void setActiveSlot(int numb) {
+		if (inventory.size() < numb) {
+			activeSlot = numb;
+		}
+		
+	}
 	
 }
