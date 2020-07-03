@@ -29,7 +29,7 @@ public class ActionMenu {
 	// butten array muss erstmal durchdeklariert werden damit set oder add mit
 	// positionsangabe funktioniert
 	public ActionMenu() {
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 70; i++) {
 			buttons.add(null);
 		}
 		buttons.set(0, new Button(x, y, bWidth, bHeight));
@@ -61,6 +61,8 @@ public class ActionMenu {
 		buttons.set(41, new Button(x + 80, y + bHeight + 5, bWidth, bHeight));
 		buttons.set(40, new Button(x + 80, y, bWidth, bHeight));
 		buttonSetup();
+		//useButtons
+		buttons.set(5, new Button(x, y + 3 * bHeight + 10, bWidth, bHeight));
 	}
 
 	// enemys button werden standartmaessig auf die hintergrundfarbe gesetzt also
@@ -380,6 +382,7 @@ public class ActionMenu {
 			buttons.get(1).paint(g);
 			buttons.get(2).paint(g);
 			buttons.get(3).paint(g);
+			buttons.get(5).paint(g);
 		} else if (moveMenuActive) {
 			for (int i = 10; i < 20; i++) {
 				try {

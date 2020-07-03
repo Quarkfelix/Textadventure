@@ -6,7 +6,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 
-//spielt musik ab die man ihm übergibt
+//spielt musik ab die man ihm uebergibt
 public class MusicPlayer extends Thread{
 	private File file;
 	private Clip clip;

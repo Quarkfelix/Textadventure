@@ -9,6 +9,7 @@ import java.util.Map;
 import Infrastructure.Settings;
 import Objects.Player;
 import libary_version_2.Button;
+import libary_version_2.MusicPlayer;
 import libary_version_2.TextArea;
 
 public class Surface {
@@ -20,8 +21,10 @@ public class Surface {
 	public static Room[][] rooms;
 	public static Player player;
 	public static ActionMenu actionMenu;
+	public static MusicPlayer mp;
 	
 	public Surface() {
+		mp = new MusicPlayer("res/bm.wav");
 		rooms = new Room[50][50];
 		roomSetup();
 		player = new Player();

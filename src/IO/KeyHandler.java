@@ -18,7 +18,7 @@ public class KeyHandler implements KeyListener{
 	}
 
 	/*
-	 *	bei VK_ENTER wird im surface der a button gedrückt. bei backspace der b button. 
+	 *	bei VK_ENTER wird im surface der a button gedrï¿½ckt. bei backspace der b button. 
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -43,7 +43,9 @@ public class KeyHandler implements KeyListener{
 		case KeyEvent.VK_BACK_SPACE:
 			DrawGame.surface.checkButtonPress(Settings.bButtonX, Settings.bButtonY);
 			break;
-
+		case KeyEvent.VK_ESCAPE: 
+			System.exit(0);
+			break;
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + e.getKeyCode());
 		}
