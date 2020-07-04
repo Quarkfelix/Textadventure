@@ -30,9 +30,6 @@ public class Room {
 	}
 	
 	public void createItems() {		
-		
-		
-		
 		//attack
 		if(Settings.muellpickerSpawnchance < Math.random()) {
 			roomInventory.add(new Muellpicker());

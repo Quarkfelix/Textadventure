@@ -24,7 +24,7 @@ public class Surface {
 	public static MusicPlayer mp;
 	
 	public Surface() {
-		mp = new MusicPlayer("res/gmbs.wav");
+		mp = new MusicPlayer("res/Bgm.wav");
 		rooms = new Room[50][50];
 		roomSetup();
 		player = new Player();
