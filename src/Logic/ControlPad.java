@@ -40,13 +40,12 @@ public class ControlPad {
 		buttons.put("middle", new Button(40 + x, 40 + y, 30, 30));
 		buttons.get("middle").setColor(new Color(28, 28, 28));
 		buttons.get("middle").setFramingColor(new Color(28, 28, 28));
-		
 	}
 	
 	
 	/*
-	 *	Kann aus anderen Klassen aufgerufen werden um zu schauen ob da ControlPad gedr�ckt wurde. 
-	 *	es wird der bereich zur�ckgegeben der gedr�ckt wurde oder NAN wenn nichts gedr�ckt wurde.
+	 *	Kann aus anderen Klassen aufgerufen werden um zu schauen ob da ControlPad gedrueckt wurde. 
+	 *	es wird der bereich zurueckgegeben der gedrueckt wurde oder NAN wenn nichts gedrueckt wurde.
 	 */
 	public String checkButtonPress(int x, int y) {
 		if (buttons.get("up").contains(x, y)) {

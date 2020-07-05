@@ -1,0 +1,13 @@
+Controls
+
+ESC 		- 	Schließt Spiel
+ENTER 		-	Gleiche Funktion wie A-Button
+BACKSPACE 	-	Gleiche Funktion wie B-Button
+ARROW-KEYS	-	Gleiche Funktion wie Steuerkreutz
+
+A-BUTTON			-	Bestätigen/Auswählen
+B-BUTTON			-	Zurück
+STEUERKREUTZ-DOWN	-	Down/Button beneath
+STEUERKREUTZ-UP		-	Up/Button above
+STEUERKREUTZ-RIGHT	-	Bestätigen/Auswählen
+STEUERKREUTZ-LEFT	-	Zurück
