@@ -13,17 +13,23 @@ import Infrastructure.Settings;
 import Logic.Surface;
 
 public class DrawGame extends JPanel{
-	public static Surface surface = new Surface();
+	public static Surface surface;
 	
 	public DrawGame() {
 		this.addMouseListener(new MouseHandler());
+		surface = new Surface();
 	}
+	
 	
 	public void paint(Graphics graphics) {
 		Graphics2D g = (Graphics2D) graphics;
 		g.setColor(Settings.windowColor);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
-
-		surface.paint(g);
+		try {
+			surface.paint(g);			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 }

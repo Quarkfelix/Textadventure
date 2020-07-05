@@ -3,7 +3,7 @@ package Objects;
 import Infrastructure.Settings;
 
 public class Muellpicker extends Item {
-	public final double spawnchance = 0.6;
+	public final double spawnchance = 0.0;
 	public String description = "Muellpicker"; //this variable will be changed for the different kinds of muellpicker
 	private int rarity = 1;
 	private int attackdamage;

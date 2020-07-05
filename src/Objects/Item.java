@@ -14,5 +14,9 @@ public abstract class Item {
 	public double getSpawnchance() {
 		return 0;
 	}
+	
+	public void doSomeShit() {
+		
+	}
 
 }

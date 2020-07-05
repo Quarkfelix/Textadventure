@@ -1,7 +1,7 @@
 package Objects;
 
 public class Potion extends Item{
-	public final double spawnchance = 0.25;
+	public final double spawnchance = 0.0;
 	public String description = "Potion"; //this variable will be changed for the different kinds of potions
 
 	@Override
@@ -12,6 +12,11 @@ public class Potion extends Item{
 	@Override
 	public String getDescription() {
 		return description;
+	}
+	
+	@Override
+	public void doSomeShit() {
+		
 	}
 
 }

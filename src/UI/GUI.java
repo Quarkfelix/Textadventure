@@ -15,7 +15,7 @@ public class GUI extends JFrame{
 		jf = new JFrame();
 		jf.setSize(Settings.windowWidth, Settings.windowHeight);
 		jf.setLocationRelativeTo(null);
-		jf.setResizable(true);
+		jf.setResizable(false);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		jf.addKeyListener(new KeyHandler());

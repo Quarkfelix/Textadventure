@@ -35,14 +35,15 @@ public class Settings {
 	
 	
 	//SpawnChances
-	public static final double keySpawnchance = 0.5;
-	public static final double muellpickerSpawnchance = 0.5;
+	public static final double keySpawnchance = 0.3;
+	public static final double muellpickerSpawnchance = 1.0;
 	public static final double potionSpawnchance = 0.5;
+	public static final double secretDoorSpawnChance = 1.0;
 	
 	//Muellpicker
-	public static int muellpickerAttackdamageLVL1 = 10;
-	public static int muellpickerAttackdamageLVL2 = 50;
-	public static int muellpickerAttackdamageLVL3 = 100;
+	public static int muellpickerAttackdamageLVL1 = 200;
+	public static int muellpickerAttackdamageLVL2 = 250;
+	public static int muellpickerAttackdamageLVL3 = 500;
 	
 	
 	

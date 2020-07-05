@@ -24,7 +24,7 @@ public class Surface {
 	public static MusicPlayer mp;
 	
 	public Surface() {
-		mp = new MusicPlayer("res/Bgm.wav");
+		setupMusic();
 		rooms = new Room[50][50];
 		roomSetup();
 		player = new Player();
@@ -36,6 +36,12 @@ public class Surface {
 		controlPad = new ControlPad(Settings.controlPadX, Settings.controlPadY);
 		buttonSetup();
 		updateTextAreas();
+	}
+	
+	public void setupMusic() {
+		mp = new MusicPlayer("res/startup sound.wav");
+		mp.volume = (float) 0.6;
+		mp.addQue("res/bm.wav");
 	}
 	
 	public static Room getCurrentRoom() {
@@ -135,5 +141,4 @@ public class Surface {
 		bButton.paint(g);
 		
 	}
-
 }

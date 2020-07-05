@@ -47,7 +47,7 @@ public class KeyHandler implements KeyListener{
 			System.exit(0);
 			break;
 		default:
-			throw new IllegalArgumentException("Unexpected value: " + e.getKeyCode());
+			System.out.println("KEY NOT SUPPORTED");
 		}
 	}
 

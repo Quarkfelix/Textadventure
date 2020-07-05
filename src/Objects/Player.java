@@ -10,35 +10,41 @@ public class Player {
 	private int x = 25;
 	private int y = 25;
 	private int activeSlot = 0;
-	public static ArrayList<Item> inventory = new ArrayList<Item>(); //alle items sind kinder von item
+	public static ArrayList<Item> weapons = new ArrayList<Item>(); //alle items sind kinder von item
+	public static ArrayList<Item> items = new ArrayList<Item>();
 	
 	public Player() {
-	
+//		inventory.add(new Muellpicker());
+//		inventory.add(new Muellpicker());
+//		inventory.add(new Muellpicker());
 	}
 	
 	//picks up item from roomInventory
 	public void pickUp(int index) {
-		inventory.add(Surface.getCurrentRoom().getItem(index));
-		//Surface.getCurrentRoom().roomInventory.set(index, null);
-		System.out.println(inventory.size());
+		if (Surface.getCurrentRoom().getItem(index).getClass() == Muellpicker.class) {
+			weapons.add(Surface.getCurrentRoom().getItem(index));
+			Surface.getCurrentRoom().roomInventory.set(index, null);
+		} else {
+			items.add(Surface.getCurrentRoom().getItem(index));
+			Surface.getCurrentRoom().roomInventory.set(index, null);
+		}
 	}
 	
-	//das inventar wird auf alle Attack items untersucht
-	public ArrayList<Item> getAllWeapons() {
-		ArrayList<Item> items = new ArrayList<Item>();
-		for (Item item : inventory) {
-			if(item.getClass().toString() == "Muellpicker") {
-				items.add(item);
-			}
-		}
-		return items;
-		
-	}
+
 	/*
 	 * Greift ausgewaehlten gegner mit ausgewaehlen muellpicker an.
 	 */
-	public void attack(Room room, int enemyToAttack) {
-		room.enemys.get(enemyToAttack).takedamage(inventory.get(activeSlot).getAttackdamage());
+	public void attack(Item weapon) {
+		for (Enemy enemy : Surface.getCurrentRoom().enemys) {
+			if (enemy.isTagged() && enemy.isAlive()) {
+				enemy.takedamage(weapon.getAttackdamage());
+			}
+		}
+	}
+	
+	public void useItem(int index) {
+		items.get(index).doSomeShit();
+		items.remove(index);
 	}
 	
 	public int getX() {
@@ -53,12 +59,4 @@ public class Player {
 	public void setY(int y) {
 		this.y = y;
 	}
-	
-	public void setActiveSlot(int numb) {
-		if (inventory.size() < numb) {
-			activeSlot = numb;
-		}
-		
-	}
-	
 }

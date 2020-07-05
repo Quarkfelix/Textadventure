@@ -18,6 +18,7 @@ import Objects.Potion;
 //content of room is displayed in TextArea in Surface
 public class Room {
 	private int randomZahl;
+	public boolean hasSecretDoor = false;
 	public String story = "";
 	public String name = "";
 	public ArrayList<Enemy> enemys = new ArrayList<Enemy>();
@@ -31,17 +32,17 @@ public class Room {
 	
 	public void createItems() {		
 		//attack
-		if(Settings.muellpickerSpawnchance < Math.random()) {
+		if(Math.random() <= Settings.muellpickerSpawnchance) {
 			roomInventory.add(new Muellpicker());
 		}
 		
 		//heal
-		if(Settings.potionSpawnchance < Math.random()) {
+		if(Math.random() <= Settings.potionSpawnchance) {
 			roomInventory.add(new Potion());
 		}
 		
 		//key
-		if(Settings.keySpawnchance < Math.random()) {
+		if(Math.random() <= Settings.keySpawnchance) {
 			roomInventory.add(new Key());
 		}
 	
@@ -98,6 +99,17 @@ public class Room {
 			break;
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + randomZahl);
+		}
+		
+		if ((Math.random()) <= Settings.secretDoorSpawnChance) {
+			hasSecretDoor = true;
+			System.out.println("secret");
+		}
+	}
+	
+	public void untagEnemys() {
+		for (Enemy enemy : enemys) {
+			enemy.setTagged(false);
 		}
 	}
 	
