@@ -94,13 +94,12 @@ public class Surface {
 		if(aButton.contains(x, y)) {
 			actionMenu.pressButton();
 			updateTextAreas();
-			System.out.println("A Button");
 		}
 		if(bButton.contains(x, y)) {
 			actionMenu.back();
-			System.out.println("B Button");
 		}
 		
+		//für die cases hätte ich ein enum benutzen sollen aber kannte ich damals noch nicht
 		switch (controlPad.checkButtonPress(x, y)) {
 		case "up":
 			actionMenu.move("up");

@@ -127,6 +127,7 @@ public class ActionMenu {
 		buttons.get(selectedButton).setFramingActive(true);
 	}
 
+	//
 	public void move(String direction) {
 		try {
 			switch (direction) {
@@ -153,6 +154,7 @@ public class ActionMenu {
 	 * wird aus Surface/keyhandler aufgerufen wenn ein button gedrueckt wird es wird
 	 * der aktive button "gerdueckt" der gedrueckte button wird auf den stack
 	 * geschrieben damit spaeter der weg zurueckverfolgt werden kann
+	 * könnte noch in eine eigen klasse
 	 */
 	public void pressButton() {
 		switch (selectedButton) {

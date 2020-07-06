@@ -17,6 +17,7 @@ public class Player {
 
 	}
 	
+	//item oder weapon aus dem raum holen und im inventar abspeichern
 	public void pickUp(int index) {
 		if (Surface.getCurrentRoom().weapons.size() >= index+1) {
 			weapons.add(Surface.getCurrentRoom().getWeapon(index));
@@ -38,11 +39,13 @@ public class Player {
 		}
 	}
 	
+	//item benutzen
 	public void useItem() {
 		items.get(selectedItem).doSomeShit();
 		items.remove(selectedItem);
 	}
 	
+	//item zurück in dem raum
 	public void dropItem() {
 		Surface.getCurrentRoom().items.add(items.get(selectedItem));
 		items.remove(selectedItem);
