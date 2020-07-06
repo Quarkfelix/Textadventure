@@ -9,27 +9,23 @@ public class Player {
 	
 	private int x = 25;
 	private int y = 25;
-	private int activeSlot = 0;
+	private int selectedItem = 0;
 	public static ArrayList<Item> weapons = new ArrayList<Item>(); //alle items sind kinder von item
 	public static ArrayList<Item> items = new ArrayList<Item>();
 	
 	public Player() {
-//		inventory.add(new Muellpicker());
-//		inventory.add(new Muellpicker());
-//		inventory.add(new Muellpicker());
+
 	}
 	
-	//picks up item from roomInventory
 	public void pickUp(int index) {
-		if (Surface.getCurrentRoom().getItem(index).getClass() == Muellpicker.class) {
-			weapons.add(Surface.getCurrentRoom().getItem(index));
-			Surface.getCurrentRoom().roomInventory.set(index, null);
+		if (Surface.getCurrentRoom().weapons.size() >= index+1) {
+			weapons.add(Surface.getCurrentRoom().getWeapon(index));
+			Surface.getCurrentRoom().weapons.remove(index);	
 		} else {
-			items.add(Surface.getCurrentRoom().getItem(index));
-			Surface.getCurrentRoom().roomInventory.set(index, null);
+			items.add(Surface.getCurrentRoom().getItem(index-Surface.getCurrentRoom().weapons.size()));
+			Surface.getCurrentRoom().items.remove(index-Surface.getCurrentRoom().weapons.size());
 		}
 	}
-	
 
 	/*
 	 * Greift ausgewaehlten gegner mit ausgewaehlen muellpicker an.
@@ -42,9 +38,14 @@ public class Player {
 		}
 	}
 	
-	public void useItem(int index) {
-		items.get(index).doSomeShit();
-		items.remove(index);
+	public void useItem() {
+		items.get(selectedItem).doSomeShit();
+		items.remove(selectedItem);
+	}
+	
+	public void dropItem() {
+		Surface.getCurrentRoom().items.add(items.get(selectedItem));
+		items.remove(selectedItem);
 	}
 	
 	public int getX() {
@@ -58,5 +59,13 @@ public class Player {
 	}
 	public void setY(int y) {
 		this.y = y;
+	}
+
+	public int getSelectedItem() {
+		return selectedItem;
+	}
+
+	public void setSelectedItem(int selectedItem) {
+		this.selectedItem = selectedItem;
 	}
 }

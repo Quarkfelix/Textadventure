@@ -39,4 +39,8 @@ public class Enemy {
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
+	
+	public int getHealth() {
+		return health;
+	}
 }

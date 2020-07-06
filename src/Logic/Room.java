@@ -22,7 +22,8 @@ public class Room {
 	public String story = "";
 	public String name = "";
 	public ArrayList<Enemy> enemys = new ArrayList<Enemy>();
-	public ArrayList<Item> roomInventory = new ArrayList<Item>();
+	public ArrayList<Item> weapons = new ArrayList<Item>();
+	public ArrayList<Item> items = new ArrayList<Item>();
 	
 	public Room() {
 		roomsetup();
@@ -33,17 +34,17 @@ public class Room {
 	public void createItems() {		
 		//attack
 		if(Math.random() <= Settings.muellpickerSpawnchance) {
-			roomInventory.add(new Muellpicker());
+			weapons.add(new Muellpicker());
 		}
 		
 		//heal
 		if(Math.random() <= Settings.potionSpawnchance) {
-			roomInventory.add(new Potion());
+			items.add(new Potion());
 		}
 		
 		//key
 		if(Math.random() <= Settings.keySpawnchance) {
-			roomInventory.add(new Key());
+			items.add(new Key());
 		}
 	
 	}
@@ -114,7 +115,11 @@ public class Room {
 	}
 	
 	public Item getItem(int index) {
-		return roomInventory.get(index);
+		return items.get(index);
+	}
+	
+	public Item getWeapon(int index) {
+		return weapons.get(index);
 	}
 	
 	public void paint(Graphics2D g) {

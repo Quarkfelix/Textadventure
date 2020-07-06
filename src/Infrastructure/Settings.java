@@ -35,9 +35,9 @@ public class Settings {
 	
 	
 	//SpawnChances
-	public static final double keySpawnchance = 0.3;
+	public static final double keySpawnchance = 1.0;
 	public static final double muellpickerSpawnchance = 1.0;
-	public static final double potionSpawnchance = 0.5;
+	public static final double potionSpawnchance = 1.0;
 	public static final double secretDoorSpawnChance = 1.0;
 	
 	//Muellpicker

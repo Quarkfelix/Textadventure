@@ -26,6 +26,7 @@ public class ActionMenu {
 	private boolean pickUpMenuActive = false;
 	private boolean enemyMenuActive = false;
 	private boolean itemMenuActive = false;
+	private boolean itemMenuStage2Active = false;
 	private ArrayList<Button> buttons = new ArrayList<Button>();
 
 	// butten array muss erstmal durchdeklariert werden damit set oder add mit
@@ -71,6 +72,8 @@ public class ActionMenu {
 		buttons.set(44, new Button(x, y + 4 * bHeight + 20, bWidth, bHeight));
 		buttons.set(45, new Button(x, y + 5 * bHeight + 25, bWidth, bHeight));
 		buttons.set(46, new Button(x, y + 6 * bHeight + 30, bWidth, bHeight));
+		buttons.set(48, new Button(x + 110, y, bWidth, bHeight));
+		buttons.set(49, new Button(x + 110, y + bHeight + 5, bWidth, bHeight));
 
 		
 		buttonSetup();
@@ -105,14 +108,15 @@ public class ActionMenu {
 		
 		// pick up
 		buttons.get(3).setText("pick Up");
-		for (int i = 0; i < Surface.getCurrentRoom().roomInventory.size(); i++) {
-			System.out.println(Surface.getCurrentRoom().roomInventory.size());
-			buttons.get(30 + i).setText(Surface.getCurrentRoom().roomInventory.get(i).getDescription());
+		for (int i = 0; i < Surface.getCurrentRoom().items.size(); i++) {
+			buttons.get(30 + i).setText(Surface.getCurrentRoom().items.get(i).getDescription());
 		}
 		// enemys
-				
+		
 		//use
 		buttons.get(4).setText("use Items");
+		buttons.get(48).setText("use");
+		buttons.get(49).setText("drop");
 
 	}
 
@@ -124,16 +128,25 @@ public class ActionMenu {
 	}
 
 	public void move(String direction) {
-		switch (direction) {
-		case "up":
-			setSelectedButton(selectedButton - 1);
-			break;
-		case "down":
-			setSelectedButton(selectedButton + 1);
-			break;
-		default:
-			throw new IllegalArgumentException("Unexpected value: " + direction);
+		try {
+			switch (direction) {
+			case "up":
+				if (buttons.get(selectedButton - 1 ) != null) {
+					setSelectedButton(selectedButton - 1);
+				}
+				break;
+			case "down":
+				if (buttons.get(selectedButton + 1 ) != null) {
+					setSelectedButton(selectedButton + 1);
+				}
+				break;
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + direction);
+			}	
+		} catch (Exception e) {
+			System.out.println("please dont do that");
 		}
+		
 	}
 
 	/*
@@ -258,60 +271,60 @@ public class ActionMenu {
 			update();
 			break;
 		case 30:
-			if (Surface.getCurrentRoom().getItem(0) != null) {
+			try {
 				Surface.player.pickUp(0);
-				buttons.get(30).setText("");
-				update();
-			}
+			} catch (Exception e) {}
+			buttons.get(30).setText("");
+			update();
 			break;
 		case 31:
-			if (Surface.getCurrentRoom().getItem(1) != null) {
+			try {
 				Surface.player.pickUp(1);
-				buttons.get(31).setText("");
-				update();
-			}
+			} catch (Exception e) {}
+			buttons.get(31).setText("");
+			update();
 			break;
 		case 32:
-			if (Surface.getCurrentRoom().getItem(2) != null) {
+			try {
 				Surface.player.pickUp(2);
-				buttons.get(32).setText("");
-				update();
-			}
+			} catch (Exception e) {}
+			buttons.get(32).setText("");
+			update();
 			break;
 		case 33:
-			if (Surface.getCurrentRoom().getItem(3) != null) {
+			try {
 				Surface.player.pickUp(3);
-				buttons.get(33).setText("");
-				update();
-			}
+			} catch (Exception e) {}
+			buttons.get(34).setText("");
+			update();
 			break;
 		case 34:
-			if (Surface.getCurrentRoom().getItem(4) != null) {
+			try {
 				Surface.player.pickUp(4);
-				buttons.get(34).setText("");
-				update();
-			}
+			} catch (Exception e) {}
+			buttons.get(34).setText("");
+			update();
 			break;
 		case 35:
-			if (Surface.getCurrentRoom().getItem(5) != null) {
+			try {
 				Surface.player.pickUp(5);
-				buttons.get(35).setText("");
-				update();
-			}
+			} catch (Exception e) {}
+			buttons.get(35).setText("");
+			update();
 			break;
 		case 36:
-			if (Surface.getCurrentRoom().getItem(6) != null) {
+			try {
 				Surface.player.pickUp(6);
-				buttons.get(36).setText("");
-				update();
-			}
+			} catch (Exception e) {}
+			buttons.get(36).setText("");
+			update();
 			break;
 		case 37:
-			if (Surface.getCurrentRoom().getItem(7) != null) {
+			try {
 				Surface.player.pickUp(7);
-				buttons.get(37).setText("");
-				update();
-			}
+			} catch (Exception e) {}
+			buttons.get(37).setText("");
+			update();
 			break;
 			//item use
 		case 4: 
@@ -322,35 +335,60 @@ public class ActionMenu {
 			update();
 			break;
 		case 40:
-			Surface.player.useItem(0);
+			Surface.player.setSelectedItem(0);
+			selectedButtonsStack.add(selectedButton);
+			itemMenuStage2Active = true;
+			setSelectedButton(48);
 			update();
 			break;
 		case 41:
-			Surface.player.useItem(0);
+			Surface.player.setSelectedItem(1);
+			selectedButtonsStack.add(selectedButton);
+			itemMenuStage2Active = true;
+			setSelectedButton(48);
 			update();
 			break;
 		case 42:
-			Surface.player.useItem(0);
+			Surface.player.setSelectedItem(2);
+			selectedButtonsStack.add(selectedButton);
+			itemMenuStage2Active = true;
+			setSelectedButton(48);
 			update();
 			break;
 		case 43:
-			Surface.player.useItem(0);
+			Surface.player.setSelectedItem(3);
+			selectedButtonsStack.add(selectedButton);
+			itemMenuStage2Active = true;
+			setSelectedButton(48);
 			update();
 			break;
 		case 44:
-			Surface.player.useItem(0);
+			Surface.player.setSelectedItem(4);
+			selectedButtonsStack.add(selectedButton);
+			itemMenuStage2Active = true;
+			setSelectedButton(48);
 			update();
 			break;
 		case 45:
-			Surface.player.useItem(0);
+			Surface.player.setSelectedItem(5);
+			selectedButtonsStack.add(selectedButton);
+			itemMenuStage2Active = true;
+			setSelectedButton(48);
 			update();
 			break;
 		case 46:
-			Surface.player.useItem(0);
+			Surface.player.setSelectedItem(6);
+			selectedButtonsStack.add(selectedButton);
+			itemMenuStage2Active = true;
+			setSelectedButton(48);
 			update();
 			break;
-		case 47:
-			Surface.player.useItem(0);
+		case 48:
+			Surface.player.useItem();
+			update();
+			break;
+		case 49: 
+			Surface.player.dropItem();
 			update();
 			break;
 
@@ -389,13 +427,17 @@ public class ActionMenu {
 		}
 		if (enemyMenuActive) {
 			enemyMenuActive = false;
-			setSelectedButton(selectedButtonsStack.get(selectedButtonsStack.size() - 1));
+			setSelectedButton(selectedButtonsStack.get(selectedButtonsStack.size() - 1)); //vorheriger button
 		}
-		if(itemMenuActive) {
+		if (itemMenuStage2Active) {
+			itemMenuStage2Active = false;
+			setSelectedButton(selectedButtonsStack.get(selectedButtonsStack.size() - 1));
+		} else if(itemMenuActive) {
 			itemMenuActive = false;
 			actionMenuActive = true;
 			setSelectedButton(selectedButtonsStack.get(selectedButtonsStack.size() - 1));
 		}
+		
 		selectedButtonsStack.remove(selectedButtonsStack.size() - 1);
 	}
 
@@ -413,19 +455,19 @@ public class ActionMenu {
 		switch (Surface.getCurrentRoom().enemys.size()) {
 		case 4:
 			if (Surface.getCurrentRoom().enemys.get(3).isAlive()) {
-				buttons.get(23).setText("enemy4");
+				buttons.get(23).setText("HP: " + Surface.getCurrentRoom().enemys.get(3).getHealth());
 			}			
 		case 3:
 			if (Surface.getCurrentRoom().enemys.get(2).isAlive()) {
-				buttons.get(22).setText("enemy3");
+				buttons.get(22).setText("HP: " + Surface.getCurrentRoom().enemys.get(2).getHealth());
 			}
 		case 2:
 			if (Surface.getCurrentRoom().enemys.get(1).isAlive()) {
-				buttons.get(21).setText("enemy2");
+				buttons.get(21).setText("HP: " + Surface.getCurrentRoom().enemys.get(1).getHealth());
 			}			
 		case 1:
 			if (Surface.getCurrentRoom().enemys.get(0).isAlive()) {
-				buttons.get(20).setText("enemy1");
+				buttons.get(20).setText("HP: " + Surface.getCurrentRoom().enemys.get(0).getHealth());
 			}
 		case 0:
 			break;
@@ -457,20 +499,28 @@ public class ActionMenu {
 		}
 
 		// items in room
-		for (int i = 30; i < 49; i++) {
+		for (int i = 30; i < 47; i++) {
 			try {
 				buttons.get(i).setText("");
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
 		}
-		for (int i = 0; i < Surface.getCurrentRoom().roomInventory.size(); i++) {
+		
+		Room cRoom = Surface.getCurrentRoom();
+		for (int i = 0; i < cRoom.weapons.size(); i++) {
 			try {
-				buttons.get(30 + i).setText(Surface.getCurrentRoom().roomInventory.get(i).getDescription());
+				buttons.get(30 + i).setText(cRoom.weapons.get(i).getDescription());
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			
+		}
+		for (int i = 0; i < cRoom.items.size(); i++) {
+			try {
+				buttons.get(30 + cRoom.weapons.size() + i).setText(Surface.getCurrentRoom().items.get(i).getDescription());
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 		}
 		
 		//itembuttons
@@ -482,7 +532,6 @@ public class ActionMenu {
 			buttons.get(44).setText(Player.items.get(4).getDescription());
 			buttons.get(45).setText(Player.items.get(5).getDescription());
 			buttons.get(46).setText(Player.items.get(6).getDescription());
-			buttons.get(47).setText(Player.items.get(7).getDescription());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -533,12 +582,16 @@ public class ActionMenu {
 				}
 			}
 		} else if(itemMenuActive) {
-			for (int i = 40; i < 50; i++) {
+			for (int i = 40; i < 47; i++) {
 				try {
 					buttons.get(i).paint(g);
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
+			}
+			if (itemMenuStage2Active) {
+				buttons.get(48).paint(g);
+				buttons.get(49).paint(g);
 			}
 		}else {
 			buttons.get(0).paint(g);
