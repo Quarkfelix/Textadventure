@@ -21,10 +21,9 @@ public class Surface {
 	public static Room[][] rooms;
 	public static Player player;
 	public static ActionMenu actionMenu;
-	public static MusicPlayer mp;
-	
+
+//constructor------------------------------------------------------------------------------------------------------------
 	public Surface() {
-		setupMusic();
 		rooms = new Room[50][50];
 		roomSetup();
 		player = new Player();
@@ -37,20 +36,14 @@ public class Surface {
 		buttonSetup();
 		updateTextAreas();
 	}
+
 	
-	public void setupMusic() {
-		mp = new MusicPlayer("res/startup sound.wav");
-		mp.volume = (float) 0.6;
-		mp.addQue("res/bm.wav");
-	}
-	
+//methods---------------------------------------------------------------------------------------------------------------
 	public static Room getCurrentRoom() {
 		return rooms[player.getX()][player.getY()];
 	}
 	
-	/*
-	 * erstellt die raeume. wird einmal beim programmstart durch konstruktor aufgerufen
-	 */
+	//erstellt die raeume. wird einmal beim programmstart durch konstruktor aufgerufen
 	private void roomSetup() {
 		for (int i = 0; i < 50; i++) {
 			for (int j = 0; j < 50; j++) {
@@ -59,10 +52,7 @@ public class Surface {
 		}
 		try {
 			updateTextAreas();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		System.out.println("Rooms created");
+		} catch (Exception e) {}
 	}
 	
 	//a und b butons werden erstellt. wird einmal beim programmstart durch konstruktor aufgerufen
@@ -120,17 +110,14 @@ public class Surface {
 		}
 	}
 	
-	/*
-	 * Textarea wird im aktuellen raum aktualisiert 
-	 */
+	//Textarea wird im aktuellen raum aktualisiert 
 	public void updateTextAreas() {
 		textArea.setText(rooms[player.getX()][player.getY()].story);
 	}
 	
 	
 	
-	
-	//  *paint bereich* //
+//Paint-Methods-------------------------------------------------------------------------------------------------------------
 	public void paint(Graphics2D g) {
 		rooms[player.getX()][player.getY()].paint(g);
 		textArea.paint(g);

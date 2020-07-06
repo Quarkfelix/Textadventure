@@ -104,7 +104,6 @@ public class Room {
 		
 		if ((Math.random()) <= Settings.secretDoorSpawnChance) {
 			hasSecretDoor = true;
-			System.out.println("secret");
 		}
 	}
 	
