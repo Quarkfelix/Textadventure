@@ -1,11 +1,11 @@
-package Logic;
+package logic;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.HashMap;
 
-import UI.DrawGame;
 import libary_version_2.Button;
+import ui.DrawGame;
 
 public class ControlPad {
 	private int x, y;

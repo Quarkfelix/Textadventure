@@ -1,9 +1,9 @@
-package Objects;
+package objects;
 
 import java.util.ArrayList;
 
-import Logic.Room;
-import Logic.Surface;
+import logic.Room;
+import logic.Surface;
 
 public class Player {
 	

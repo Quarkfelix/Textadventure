@@ -1,10 +1,10 @@
-package IO;
+package io;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import Logic.Surface;
-import UI.DrawGame;
+import logic.Surface;
+import ui.DrawGame;
 
 
 public class MouseHandler implements MouseListener{

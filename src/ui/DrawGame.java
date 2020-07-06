@@ -1,4 +1,4 @@
-package UI;
+package ui;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -6,11 +6,11 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import IO.KeyHandler;
-import IO.MouseHandler;
-import Infrastructure.Main;
-import Infrastructure.Settings;
-import Logic.Surface;
+import infrastructure.Main;
+import infrastructure.Settings;
+import io.KeyHandler;
+import io.MouseHandler;
+import logic.Surface;
 
 public class DrawGame extends JPanel{
 	public static Surface surface;

@@ -1,6 +1,6 @@
-package Infrastructure;
+package infrastructure;
 
-import UI.GUI;
+import ui.GUI;
 
 public class Main {
 	public static GUI gui;

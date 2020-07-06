@@ -1,12 +1,12 @@
-package IO;
+package io;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import Infrastructure.Main;
-import Infrastructure.Settings;
-import Logic.Surface;
-import UI.DrawGame;
+import infrastructure.Main;
+import infrastructure.Settings;
+import logic.Surface;
+import ui.DrawGame;
 
 
 public class KeyHandler implements KeyListener{

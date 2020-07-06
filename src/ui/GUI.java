@@ -1,10 +1,10 @@
-package UI;
+package ui;
 
 import javax.swing.JFrame;
 
-import IO.KeyHandler;
-import IO.MouseHandler;
-import Infrastructure.Settings;
+import infrastructure.Settings;
+import io.KeyHandler;
+import io.MouseHandler;
 
 public class GUI extends JFrame{
 

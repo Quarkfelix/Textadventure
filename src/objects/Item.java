@@ -1,4 +1,4 @@
-package Objects;
+package objects;
 
 //nur dazu da damit in Playerinventar unterschideliche items gespeichert werden koennen XD
 public abstract class Item {	

@@ -1,6 +1,6 @@
-package Objects;
+package objects;
 
-import Infrastructure.Settings;
+import infrastructure.Settings;
 
 public class Enemy {
 	private boolean tagged = false;

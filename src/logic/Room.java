@@ -1,4 +1,4 @@
-package Logic;
+package logic;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -8,12 +8,12 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-import Infrastructure.Settings;
-import Objects.Enemy;
-import Objects.Item;
-import Objects.Key;
-import Objects.Muellpicker;
-import Objects.Potion;
+import infrastructure.Settings;
+import objects.Enemy;
+import objects.Item;
+import objects.Key;
+import objects.Muellpicker;
+import objects.Potion;
 
 //content of room is displayed in TextArea in Surface
 public class Room {

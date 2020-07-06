@@ -1,6 +1,7 @@
-package Objects;
+package objects;
 
-import Logic.Surface;
+import logic.Surface;
+import snake_infrastructure.SnakeGame;
 
 public class Key extends Item{
 	public static final double spawnchance = 0.0;
@@ -19,7 +20,7 @@ public class Key extends Item{
 	@Override
 	public void doSomeShit() {
 		if(Surface.getCurrentRoom().hasSecretDoor) {
-			System.out.println("Secret room");
+			SnakeGame secretGame = new SnakeGame();
 		}
 	}
 }

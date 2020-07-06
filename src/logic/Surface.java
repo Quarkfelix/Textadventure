@@ -1,4 +1,4 @@
-package Logic;
+package logic;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import Infrastructure.Settings;
-import Objects.Player;
+import infrastructure.Settings;
 import libary_version_2.Button;
 import libary_version_2.MusicPlayer;
 import libary_version_2.TextArea;
+import objects.Player;
 
 public class Surface {
 	public TextArea textArea;

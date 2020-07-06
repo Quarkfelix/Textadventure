@@ -1,4 +1,4 @@
-package Logic;
+package logic;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import Infrastructure.Settings;
-import Objects.Muellpicker;
-import Objects.Player;
-import UI.DrawGame;
+import infrastructure.Settings;
 import libary_version_2.Button;
+import objects.Muellpicker;
+import objects.Player;
+import ui.DrawGame;
 
 //ausklappmenue mit allen aktionen die in einem Raum moeglich sind 
 public class ActionMenu {

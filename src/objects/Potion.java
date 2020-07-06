@@ -1,4 +1,4 @@
-package Objects;
+package objects;
 
 public class Potion extends Item{
 	public final double spawnchance = 0.0;
