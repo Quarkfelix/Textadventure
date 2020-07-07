@@ -11,13 +11,14 @@ public class InformationPanel {
 	public static int gameScore = 0;
 	public static int highScore = 0;
 	
-	
+//constructor------------------------------------------------------------------------------------------------------------
 	public InformationPanel() {
 		score = new TextArea(960, 100, 70, 70);
 		highScoreText = new TextArea(960, 200, 70, 70);
 		textAreaSetup();
 	}
 	
+//methods------------------------------------------------------------------------------------------------------------
 	private void textAreaSetup() {
 		score.setThicness(2);
 		score.setBackgroundColor(Color.BLACK);
@@ -40,9 +41,7 @@ public class InformationPanel {
 		highScore++;
 	}
 	
-	
-	
-	
+//paint-----------------------------------------------------------------------------------------------------------------
 	public void draw(Graphics2D g) {
 		score.setText(gameScore);
 		score.paint(g);

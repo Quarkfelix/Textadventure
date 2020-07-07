@@ -3,14 +3,12 @@ package libary_version_2;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-//über music controller werden lieder abgespielt. wenn ein lied/sound abgespielt werden soll wird ein neuer MusicPlayer 
-//erstellt welcher dann seinen sound apspielt.
-//im controller wird auch festgelegt ob loop alle sounds oder nur einen.
-
+/*über music controller werden lieder abgespielt. wenn ein lied/sound abgespielt werden soll wird ein neuer MusicPlayer 
+erstellt welcher dann seinen sound apspielt.
+im controller wird auch festgelegt ob loop alle sounds oder nur einen.
+die lautstärkensteuerung muss noch auf einzelne lieder umgestellt weden */
 public class MusicController extends Thread{ 
 	private HashMap<String, MusicPlayer> musicPlayer = new HashMap<String, MusicPlayer>();
-	private boolean loopall = false;
-	private boolean loopsingle = false;
 
 //constructor------------------------------------------------------------------------------------------------------------
 	public MusicController() {
@@ -20,7 +18,6 @@ public class MusicController extends Thread{
 	public void run() {
 		while (true) {
 			try {
-				System.out.println("test");
 				Thread.sleep(10);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block

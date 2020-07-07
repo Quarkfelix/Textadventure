@@ -11,10 +11,12 @@ import snake_io.MouseHandler;
 
 public class Draw extends JPanel{
 	
+//constructor------------------------------------------------------------------------------------------------------------
 	public Draw() {
 		this.addMouseListener(new MouseHandler());
 	}
-	
+
+//methods------------------------------------------------------------------------------------------------------------
 	public void paint(Graphics graphics) {
 		Graphics2D g = (Graphics2D) graphics;
 		g.setColor(Color.WHITE);
@@ -30,11 +32,13 @@ public class Draw extends JPanel{
 class DrawThread extends Thread {
 	public Draw draw;
 	
+//constructor------------------------------------------------------------------------------------------------------------
 	public DrawThread() {
 		draw = new Draw();
 		super.start();
 	}
 	
+//methods------------------------------------------------------------------------------------------------------------
 	public void run() {
 		while(true) {
 			try {

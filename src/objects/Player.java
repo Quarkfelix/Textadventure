@@ -13,10 +13,7 @@ public class Player {
 	public static ArrayList<Item> weapons = new ArrayList<Item>(); //alle items sind kinder von item
 	public static ArrayList<Item> items = new ArrayList<Item>();
 	
-	public Player() {
-
-	}
-	
+//methods------------------------------------------------------------------------------------------------------------
 	//item oder weapon aus dem raum holen und im inventar abspeichern
 	public void pickUp(int index) {
 		if (Surface.getCurrentRoom().weapons.size() >= index+1) {
@@ -28,9 +25,7 @@ public class Player {
 		}
 	}
 
-	/*
-	 * Greift ausgewaehlten gegner mit ausgewaehlen muellpicker an.
-	 */
+	//Greift ausgewaehlten gegner mit ausgewaehlen muellpicker an.
 	public void attack(Item weapon) {
 		for (Enemy enemy : Surface.getCurrentRoom().enemys) {
 			if (enemy.isTagged() && enemy.isAlive()) {
@@ -39,7 +34,6 @@ public class Player {
 		}
 	}
 	
-	//item benutzen
 	public void useItem() {
 		items.get(selectedItem).doSomeShit();
 		items.remove(selectedItem);
@@ -47,10 +41,16 @@ public class Player {
 	
 	//item zurück in dem raum
 	public void dropItem() {
-		Surface.getCurrentRoom().items.add(items.get(selectedItem));
-		items.remove(selectedItem);
+		try {
+			Surface.getCurrentRoom().items.add(items.get(selectedItem));
+			items.remove(selectedItem);
+		} catch (Exception e) {
+			System.out.println("Room Full");
+		}
 	}
 	
+	
+//getter-setter------------------------------------------------------------------------------------------------------------
 	public int getX() {
 		return x;
 	}

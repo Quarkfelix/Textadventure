@@ -10,12 +10,13 @@ import snake_infrastructure.Settings;
 public class Head {
 	private int x,y;
 	
+//constructor------------------------------------------------------------------------------------------------------------
 	public Head() {
 		x = 1;
 		y = 1;
 	}
 
-	
+//methods------------------------------------------------------------------------------------------------------------
 	//schlange wird über dec und inc gesteuert
 	public void incX() {
 		x += 1;
@@ -33,7 +34,7 @@ public class Head {
 		y -= 1;
 	}
 	
-	//getter und setter
+//getter-setter------------------------------------------------------------------------------------------------------------
 	public int getY() {
 		return y;
 	}

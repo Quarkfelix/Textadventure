@@ -11,6 +11,7 @@ public class GUI extends JFrame{
 	public static JFrame jf;
 	public static DrawGame dg = new DrawGame();
 	
+//constructor------------------------------------------------------------------------------------------------------------
 	public void create() {
 		jf = new JFrame();
 		jf.setSize(Settings.windowWidth, Settings.windowHeight);

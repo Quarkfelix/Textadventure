@@ -8,6 +8,7 @@ public class GUI extends JFrame{
 	public JFrame jf; 
 	public DrawThread drawT;
 	
+//constructor------------------------------------------------------------------------------------------------------------
 	public GUI() {
 		jf = new JFrame();
 		drawT = new DrawThread();

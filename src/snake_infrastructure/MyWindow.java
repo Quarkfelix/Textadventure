@@ -14,6 +14,7 @@ public class MyWindow {
 	public static InformationPanel infPanel;
 	public HashMap<String, Button> buttons = new HashMap<String, Button>();
 	
+//constructor------------------------------------------------------------------------------------------------------------
 	public MyWindow() {
 		buttons.put("play", new Button(1030, 685, 120, 50, Color.BLACK, Color.RED));
 		buttons.put("quit", new Button(860, 685, 120, 50, Color.BLACK, Color.RED));
@@ -21,6 +22,7 @@ public class MyWindow {
 		infPanel = new InformationPanel();
 	}
 	
+//methods------------------------------------------------------------------------------------------------------------
 	private void buttonSetup() {
 		buttons.get("play").setText("PLAY");
 		buttons.get("quit").setText("QUIT");
@@ -40,23 +42,19 @@ public class MyWindow {
 		gf = new GameField();
 	}
 		
-	
-	//draw
+//paint------------------------------------------------------------------------------------------------------------
 	public void draw(Graphics2D g) {
 		g.setColor(Settings.windowBackgroundColor);
 		g.fillRect(0, 0, 1200, 800);
 		
 		try {
 			gf.setupDraw(g);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
+		} catch (Exception e) {}
+	
 		infPanel.draw(g);
-		
+	
 		for (String key : buttons.keySet()) {
 			buttons.get(key).paint(g);
 		}
-		
 	}
 }

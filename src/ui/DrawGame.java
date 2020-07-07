@@ -15,12 +15,13 @@ import logic.Surface;
 public class DrawGame extends JPanel{
 	public static Surface surface;
 	
+//constructor------------------------------------------------------------------------------------------------------------
 	public DrawGame() {
 		this.addMouseListener(new MouseHandler());
 		surface = new Surface();
 	}
 	
-	
+//paint------------------------------------------------------------------------------------------------------------
 	public void paint(Graphics graphics) {
 		Graphics2D g = (Graphics2D) graphics;
 		g.setColor(Settings.windowColor);
@@ -30,6 +31,5 @@ public class DrawGame extends JPanel{
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
 	}
 }

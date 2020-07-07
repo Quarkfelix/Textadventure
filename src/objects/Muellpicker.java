@@ -8,10 +8,13 @@ public class Muellpicker extends Item {
 	private int rarity = 1;
 	private int attackdamage;
 
+//constructor------------------------------------------------------------------------------------------------------------
 	public Muellpicker() {
 		assignRarity();
 	}
 
+	
+//methods------------------------------------------------------------------------------------------------------------
 	/*
 	 * legt seltenheit des muellpickers bei erzeugung fest
 	 * schaden wird je nach rarity festgelegt 
@@ -32,7 +35,7 @@ public class Muellpicker extends Item {
 	}
 
 	
-	
+//getter-setter------------------------------------------------------------------------------------------------------------
 	public int getRarity() {
 		return rarity;
 	}

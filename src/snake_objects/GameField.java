@@ -15,6 +15,7 @@ public class GameField extends Thread {
 	private int tickspeed;
 	private boolean running = true;
 	
+//constructor------------------------------------------------------------------------------------------------------------
 	public GameField() {
 		x = 25;
 		y = 20;
@@ -27,6 +28,7 @@ public class GameField extends Thread {
 		super.start();
 	}
 	
+//methods------------------------------------------------------------------------------------------------------------
 	public void run() {
 		while(running) {
 			try {
@@ -50,7 +52,7 @@ public class GameField extends Thread {
 			}		
 		}
 	}
-	
+
 	private boolean snakeCollision() {
 		int x = snake.head.getX();
 		int y = snake.head.getY();
@@ -69,7 +71,6 @@ public class GameField extends Thread {
 		} else if(snake.head.getY() >= 19 || snake.head.getY() <= 0) {
 			return true;
 		}
-		
 		return false;
 	}
 	
@@ -79,10 +80,7 @@ public class GameField extends Thread {
 		currentThread().interrupt();
 	}
 	
-	
-	
-	
-	
+//paint------------------------------------------------------------------------------------------------------------
 	public void setupDraw(Graphics2D g) {
 		g.setColor(Settings.GameFieldBackgroundColor);
 		g.fillRect(x, y, width, height);
@@ -107,8 +105,6 @@ public class GameField extends Thread {
 		g.fillRect(x + width, y, 40, height);
 		
 		g.setColor(Settings.GameFieldBorderColor);
-		g.drawRect(x, y, width, height);
-		
+		g.drawRect(x, y, width, height);	
 	}
-
 }

@@ -25,12 +25,16 @@ public class Room {
 	public ArrayList<Item> weapons = new ArrayList<Item>();
 	public ArrayList<Item> items = new ArrayList<Item>();
 	
+	
+//constructor------------------------------------------------------------------------------------------------------------
 	public Room() {
 		roomsetup();
 		createItems();
 		enemysetup();
 	}
 	
+
+//methods------------------------------------------------------------------------------------------------------------
 	public void createItems() {		
 		//attack
 		if(Math.random() <= Settings.muellpickerSpawnchance) {
@@ -49,7 +53,7 @@ public class Room {
 	
 	}
 	
-	//fügt zwischen 0 und 4 gener in den raum hinzu
+	//fuegt zwischen 0 und 4 gener in den raum hinzu
 	private void enemysetup() {
 		randomZahl = (int)((Math.random()) * 4); //zahl von 0 bis 4\
 		switch (randomZahl) {
@@ -68,35 +72,34 @@ public class Room {
 		}
 	}
 	
-	/*
-	 *	Dem erstellten Raum wird eine von 6 moeglichen storys zugewiesen.
-	 */
+	
+	//Dem erstellten Raum wird eine von 6 moeglichen storys zugewiesen.
 	private void roomsetup() {
 		randomZahl = (int)((Math.random()) * 6 + 1); //zahl von 1 bis 6
 		switch (randomZahl) {
 		case 1:
-			name = "Kueche";
-			story = "Kueche";
+			name = "Black";
+			story = "Black Room";
 			break;
 		case 2:
-			name = "Badezimmer";
-			story = "Badezimmer";
+			name = "White";
+			story = "White Room";
 			break;
 		case 3:
-			name = "Arbeitszimmer";
-			story = "Arbeitszimmer";
+			name = "Red";
+			story = "Red Room";
 			break;
 		case 4:
-			name = "Esszimmer";
-			story = "Esszimmer";
+			name = "Blue";
+			story = "Blue Room";
 			break;
 		case 5:
-			name = "Spielzimmer";
-			story = "Spielzimmer";
+			name = "Pink";
+			story = "Pink Room";
 			break;
 		case 6:
-			name = "SchalfZimmer";
-			story = "SchalfZimmer";
+			name = "Green";
+			story = "Green Room";
 			break;
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + randomZahl);
@@ -113,6 +116,8 @@ public class Room {
 		}
 	}
 	
+	
+//getter-setter------------------------------------------------------------------------------------------------------------
 	public Item getItem(int index) {
 		return items.get(index);
 	}

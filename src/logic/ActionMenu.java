@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import infrastructure.Main;
 import infrastructure.Settings;
 import libary_version_2.Button;
 import objects.Muellpicker;
@@ -29,6 +30,7 @@ public class ActionMenu {
 	private boolean itemMenuStage2Active = false;
 	private ArrayList<Button> buttons = new ArrayList<Button>();
 
+//constructor------------------------------------------------------------------------------------------------------------
 	// butten array muss erstmal durchdeklariert werden damit set oder add mit
 	// positionsangabe funktioniert
 	public ActionMenu() {
@@ -79,6 +81,8 @@ public class ActionMenu {
 		buttonSetup();
 	}
 
+	
+//methods-----------------------------------------------------------------------------------------------------------------	
 	// enemys button werden standartmaessig auf die hintergrundfarbe gesetzt also
 	// unsichtbar (hätte man auch mit alpha value machen können)
 	public void buttonSetup() {
@@ -127,7 +131,6 @@ public class ActionMenu {
 		buttons.get(selectedButton).setFramingActive(true);
 	}
 
-	//
 	public void move(String direction) {
 		try {
 			switch (direction) {
@@ -174,24 +177,28 @@ public class ActionMenu {
 			break;
 		case 10:
 			Surface.player.setY(Surface.player.getY() - 1);
+			checkEnteredRoom();
 			moveMenuActive = false;
 			setSelectedButton(0); // actionsButton
 			update();
 			break;
 		case 11:
 			Surface.player.setY(Surface.player.getY() + 1);
+			checkEnteredRoom();
 			moveMenuActive = false;
 			setSelectedButton(0); // actionsButton
 			update();
 			break;
 		case 12:
 			Surface.player.setX(Surface.player.getX() + 1);
+			checkEnteredRoom();
 			moveMenuActive = false;
 			setSelectedButton(0); // actionsButton
 			update();
 			break;
 		case 13:
 			Surface.player.setX(Surface.player.getX() - 1);
+			checkEnteredRoom();
 			moveMenuActive = false;
 			setSelectedButton(0); // actionsButton
 			update();
@@ -537,11 +544,16 @@ public class ActionMenu {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-
-
 	}
 
-	// *Paint Bereich*//
+	public void checkEnteredRoom() {
+		if(Surface.getCurrentRoom().hasSecretDoor) {
+			Main.mc.playSound("soundeffects2", "File 1");
+		}
+	}
+	
+	
+//paint---------------------------------------------------------------------------------------------------------------------	
 	public void paint(Graphics2D g) {
 		
 		//hab ich damals schlampig gearbeitet weil es als switch case besser gewesen w�re(weniger laufzeit)

@@ -11,15 +11,16 @@ public class ControlPad {
 	private int x, y;
 	private HashMap<String, Button> buttons = new HashMap<String, Button>();
 	
+//constructor-------------------------------------------------------------------------------------------------------
 	public ControlPad(int x, int y) {
 		this.x = x;
 		this.y = y;
 		buttonSetup();
 	}
 	
-	/*
-	 *	Setup der Buttons in D-Pad form. 
-	 */
+
+//methods------------------------------------------------------------------------------------------------------------
+	//Setup der Buttons in D-Pad form. 
 	private void buttonSetup() {
 		buttons.put("up", new Button(40 + x, y, 30, 40));
 		buttons.get("up").setColor(new Color(28, 28, 28));
@@ -42,7 +43,6 @@ public class ControlPad {
 		buttons.get("middle").setFramingColor(new Color(28, 28, 28));
 	}
 	
-	
 	/*
 	 *	Kann aus anderen Klassen aufgerufen werden um zu schauen ob da ControlPad gedrueckt wurde. 
 	 *	es wird der bereich zurueckgegeben der gedrueckt wurde oder NAN wenn nichts gedrueckt wurde.
@@ -58,13 +58,11 @@ public class ControlPad {
 			return "left";
 		} else {
 			return "NAN";
-		}
-		
-		
-		
-		
+		}	
 	}
 	
+	
+//paint------------------------------------------------------------------------------------------------------------
 	public void paint(Graphics2D g) {
 		buttons.get("up").paint(g);
 		buttons.get("down").paint(g);

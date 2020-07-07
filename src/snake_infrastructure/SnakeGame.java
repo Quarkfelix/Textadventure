@@ -6,6 +6,7 @@ public class SnakeGame {
 	public static GUI gui;
 	public static MyWindow window;
 	
+//constructor------------------------------------------------------------------------------------------------------------
 	public SnakeGame() {
 		window = new MyWindow();
 		gui = new GUI();

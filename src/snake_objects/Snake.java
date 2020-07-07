@@ -6,10 +6,9 @@ import java.util.ArrayList;
 public class Snake{
 	public ArrayList<Bodypart> body;
 	public Head head;
-	
 	private String movementDirection = "RIGHT";
 	
-	
+//constructor------------------------------------------------------------------------------------------------------------
 	public Snake() {
 		head = new Head();
 		body = new ArrayList<>();
@@ -17,6 +16,7 @@ public class Snake{
 		body.add(new Bodypart());
 	}
 	
+//methods------------------------------------------------------------------------------------------------------------
 	public boolean eaten(Food food) {
 		if(food.getX() == head.getX() && food.getY() == head.getY()) {
 			addBodyPiece();
@@ -24,8 +24,7 @@ public class Snake{
 		}
 		return false;
 	}
-	
-	
+
 	private void addBodyPiece() {
 		body.add(new Bodypart());
 	}
@@ -58,25 +57,19 @@ public class Snake{
 		}
 		default:
 			throw new IllegalArgumentException("Unexpected value");
-		}
-				
+		}		
 	}
 	
+//getter-setter------------------------------------------------------------------------------------------------------------
 	public void setMovementDirection(String direction) {
 		this.movementDirection = direction;
 	}
 	
-	
-	
-	
-	
-	
+//paint---------------------------------------------------------------------------------------------------------------------
 	public void draw(Graphics2D g) {
 		head.draw(g);
 		for (Bodypart bodypart : body) {
 			bodypart.draw(g);
 		}
-		
 	}
-	
 }

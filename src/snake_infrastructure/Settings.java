@@ -13,5 +13,5 @@ public class Settings {
 	public static Color ButtonBorderColor = Color.RED;
 	public static Color ButtonTextColor = Color.RED;
 	
-	public static int tickspeed = 80;
+	public static int tickspeed = 90;
 }
