@@ -9,16 +9,26 @@ public class Main {
 	public static MusicController mc;
 	
 	public static void main(String[] args) {
-		mc = new MusicController();
-		mc.newPlaylist("backgroundMusic", new String[] {"res/bm.wav", "res/bm2.wav", "res/bm3.wav"});
-		mc.setLoop("backgroundMusic", true);
-		mc.setVolume("backgroundMusic", 0.3);
-		mc.start("backgroundMusic");
+		musicSetup();
 		
 		gui = new GUI();
 		gui.create();
 		
 		RepaintThread t = new RepaintThread();
-		t.start();
+		t.start();	
+		
+		
+	}
+	
+	public static void musicSetup() {
+		mc = new MusicController();
+		mc.start();
+		
+		mc.newPlaylist("backgroundMusic", new String[] {"res/bm.wav", "res/bm2.wav", "res/bm3.wav"});
+		mc.setVolume("backgroundMusic", 0.2);
+		mc.startLooping("backgroundMusic");
+		
+		mc.newPlaylist("soundeffects", new String[] {"res/ooof.wav"});
+		mc.playSound("soundeffects", "File 1");
 	}
 }

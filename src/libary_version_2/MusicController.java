@@ -7,25 +7,29 @@ import java.util.HashMap;
 //erstellt welcher dann seinen sound apspielt.
 //im controller wird auch festgelegt ob loop alle sounds oder nur einen.
 
-public class MusicController extends Thread{
+public class MusicController extends Thread{ 
 	private HashMap<String, MusicPlayer> musicPlayer = new HashMap<String, MusicPlayer>();
 	private boolean loopall = false;
 	private boolean loopsingle = false;
 
 //constructor------------------------------------------------------------------------------------------------------------
 	public MusicController() {
-		super.start();
 	}
 	
-//run Method------------------------------------------------------------------------------------------------------------
+//run Method------------------------------------------------------------------------------------------------------------	
 	public void run() {
+		while (true) {
+			try {
+				System.out.println("test");
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 //methods---------------------------------------------------------------------------------------------------------------
-	public void play(String url) {
-		musicPlayer.put(null, new MusicPlayer(url)); //könnte fehler wegen ersetzen geben
-	}
-
 	public void newPlayer(String name, String url) {
 		musicPlayer.put(name, new MusicPlayer(url));
 	}
@@ -34,8 +38,12 @@ public class MusicController extends Thread{
 		musicPlayer.put(name, new MusicPlayer(urls));
 	}
 	
-	public void start(String name) {
-		musicPlayer.get(name).start();
+	public void startLooping(String name) {
+		musicPlayer.get(name).setLoop(true);;
+	}
+	
+	public void playSound(String playlistName, String soundName) {
+		musicPlayer.get(playlistName).playSound(soundName);
 	}
 
 	

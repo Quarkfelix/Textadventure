@@ -2,6 +2,7 @@ package libary_version_2;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 import javax.sound.sampled.AudioInputStream;
@@ -12,29 +13,36 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class MusicPlayer extends Thread{
-	private ArrayList<File> musicFiles = new ArrayList<File>();
+	private HashMap<String, File> musicFiles = new HashMap<String, File>();
 	private boolean loop = false;
+	private int playCount = 0;
+	private String activeFile = "File 1";
 	private float volume = (float) 0.0;
 	
 //constructor------------------------------------------------------------------------------------------------------------
 	public MusicPlayer(String url) {
-		musicFiles.add(new File(url));
+		musicFiles.put("File " + musicFiles.size() + 1, new File(url));
+		super.start();
 	}	
 	
 	public MusicPlayer(String[] urls) {
 		for (int i = 0; i < urls.length; i++) {
-			musicFiles.add(new File(urls[i]));
+			musicFiles.put("File " + (musicFiles.size()+1), new File(urls[i]));
 		}
+		super.start();
 	}	
 	
 //run Method------------------------------------------------------------------------------------------------------------
 	public void run() {
 		while (true) {
-			while (loop) {
-				for (File file : musicFiles) {
-					play(file);
-				}
+			for (int i = playCount; i > 0; i--) {
+				playCount--;
+				play(musicFiles.get(activeFile));
 			}
+			while (loop) {
+				musicFiles.forEach((k,v) -> play(v));
+			}
+			
 			
 			try {
 				Thread.sleep(10);
@@ -57,7 +65,6 @@ public class MusicPlayer extends Thread{
 			
 			FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 			volumeControl.setValue(volume);
-			
 			Thread.sleep(clip.getMicrosecondLength() / 1000);
 			
 			
@@ -73,6 +80,15 @@ public class MusicPlayer extends Thread{
 		}
 	}
 	
+	public void playSound(String soundName) {
+		activeFile = soundName;
+		playCount++;
+	}
+	
+	public void playSound(String soundName, int timesToPlay) {
+		activeFile = soundName;
+		playCount += timesToPlay;
+	}
 	
 	
 //getter-and-setter------------------------------------------------------------------------------------------------------
