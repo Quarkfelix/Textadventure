@@ -491,21 +491,31 @@ public class ActionMenu {
 			} catch (Exception e) {
 			}
 		}
-		switch (Player.weapons.size()) {
-		case 4:
-			buttons.get(63).setText("atk: " + Player.weapons.get(3).getAttackdamage());
-		case 3:
-			buttons.get(62).setText("atk: " + Player.weapons.get(2).getAttackdamage());
-		case 2:
-			buttons.get(61).setText("atk:" + Player.weapons.get(1).getAttackdamage());
-		case 1:
-			buttons.get(60).setText("atk:" + Player.weapons.get(0).getAttackdamage());
-		case 0:
-			
-			break;
-		default:
-			throw new IllegalArgumentException("Unexpected value: " + DrawGame.surface);
+		try {
+			switch (Player.weapons.size()) {
+			case 7:
+				buttons.get(66).setText("atk: " + Player.weapons.get(6).getAttackdamage());
+			case 6:
+				buttons.get(65).setText("atk: " + Player.weapons.get(5).getAttackdamage());
+			case 5:
+				buttons.get(64).setText("atk: " + Player.weapons.get(4).getAttackdamage());
+			case 4:
+				buttons.get(63).setText("atk: " + Player.weapons.get(3).getAttackdamage());
+			case 3:
+				buttons.get(62).setText("atk: " + Player.weapons.get(2).getAttackdamage());
+			case 2:
+				buttons.get(61).setText("atk:" + Player.weapons.get(1).getAttackdamage());
+			case 1:
+				buttons.get(60).setText("atk:" + Player.weapons.get(0).getAttackdamage());
+			case 0:
+				break;
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + Player.weapons.size());
+			}
+		} catch (Exception e) {
+			System.out.println("weapons full");
 		}
+		
 
 		// items in room
 		for (int i = 30; i < 47; i++) {
