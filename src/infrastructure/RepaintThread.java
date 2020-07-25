@@ -16,8 +16,8 @@ public class RepaintThread extends Thread{
 		while(true) {
 			GUI.dg.repaint();
 			count++;
-			if(System.nanoTime() - oldTime > 250000000) {
-				fps = count * 4;
+			if((System.nanoTime() - oldTime)/1000000 > 250) {
+				fps = count*4;
 				count = 0;
 				oldTime = System.nanoTime();
 			}

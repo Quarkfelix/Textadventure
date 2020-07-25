@@ -34,6 +34,6 @@ public class DrawGame extends JPanel{
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		tw.drawText(g, 10, 15, "linksbuendig", new Font("TimesRoman", Font.PLAIN, 10), Color.CYAN, "FPS: " + Main.t.fps);
+		tw.drawText(g, 10, 15, "linksbuendig", new Font("TimesRoman", Font.PLAIN, 15), Color.BLACK, "FPS: " + Main.t.fps);
 	}
 }

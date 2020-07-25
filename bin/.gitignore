@@ -1,4 +1,6 @@
+/infrastructure/
 /io/
+/libary_version_2/
 /logic/
 /objects/
 /snake_draw/
@@ -7,5 +9,3 @@
 /snake_objects/
 /snake_ui/
 /ui/
-/infrastructure/
-/libary_version_2/
