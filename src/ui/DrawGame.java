@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -10,10 +11,12 @@ import infrastructure.Main;
 import infrastructure.Settings;
 import io.KeyHandler;
 import io.MouseHandler;
+import libary_version_2.TextWriter;
 import logic.Surface;
 
 public class DrawGame extends JPanel{
 	public static Surface surface;
+	private TextWriter tw = new TextWriter();
 	
 //constructor------------------------------------------------------------------------------------------------------------
 	public DrawGame() {
@@ -31,5 +34,6 @@ public class DrawGame extends JPanel{
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		tw.drawText(g, 10, 15, "linksbuendig", new Font("TimesRoman", Font.PLAIN, 10), Color.CYAN, "FPS: " + Main.t.fps);
 	}
 }

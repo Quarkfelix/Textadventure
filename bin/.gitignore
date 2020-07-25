@@ -1,10 +1,11 @@
-/infrastructure/
-/libary_version_2/
 /io/
-/objects/
 /logic/
+/objects/
 /snake_draw/
 /snake_infrastructure/
+/snake_io/
 /snake_objects/
 /snake_ui/
 /ui/
+/infrastructure/
+/libary_version_2/

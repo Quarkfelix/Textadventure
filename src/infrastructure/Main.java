@@ -7,6 +7,7 @@ import ui.GUI;
 public class Main {
 	public static GUI gui;
 	public static MusicController mc;
+	public static RepaintThread t;
 	
 	public static void main(String[] args) {
 		musicSetup();
@@ -14,10 +15,7 @@ public class Main {
 		gui = new GUI();
 		gui.create();
 		
-		RepaintThread t = new RepaintThread();
-		t.start();	
-		
-		
+		t = new RepaintThread();		
 	}
 	
 	public static void musicSetup() {

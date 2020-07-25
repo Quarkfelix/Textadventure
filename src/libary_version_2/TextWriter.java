@@ -13,7 +13,7 @@ public class TextWriter {
 		int textWidth = fMetric.stringWidth(text);
 		int textHeight = fMetric.getHeight();
 		switch (absatz) {
-		case "linksbündig":
+		case "linksbuendig":
 			g.drawString(text, x, y);
 			break;
 		case "zentriert":
@@ -34,7 +34,7 @@ public class TextWriter {
 		int textWidth = fMetric.stringWidth(text);
 		int textHeight = fMetric.getHeight();
 		switch (absatz) {
-		case "linksbündig":
+		case "linksbuendig":
 			g.drawString(text, x, y);
 			break;
 		case "zentriert":
